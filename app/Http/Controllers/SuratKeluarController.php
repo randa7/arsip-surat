@@ -39,7 +39,17 @@ class SuratKeluarController extends Controller
      */
     public function create()
     {
-        //
+        $role = DB::table('model_has_roles')
+        ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+        ->select('roles.name')
+        ->where('model_has_roles.model_id', '=', Auth::id())
+        ->first();
+
+        $bagian = DB::table('bagian')
+            ->select('bagian.*')
+            ->get();
+
+    return view('content.suratkeluar.create',compact('role','bagian'));
     }
 
     /**
@@ -72,7 +82,25 @@ class SuratKeluarController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $surat = DB::table('surat_keluar')
+        ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
+        ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+        ->where('surat_keluar.idsuratkeluar', '=', $id)
+        ->first();
+
+        $role = DB::table('model_has_roles')
+        ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+        ->select('roles.name')
+        ->where('model_has_roles.model_id', '=', Auth::id())
+        ->first();
+
+        $bagian = DB::table('bagian')
+        ->select('bagian.*')
+        ->get();
+
+
+    return view('content.suratkeluar.edit',compact('surat','role' , 'bagian'));
     }
 
     /**

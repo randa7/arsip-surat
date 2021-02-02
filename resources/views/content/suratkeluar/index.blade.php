@@ -51,10 +51,10 @@
               <td>{{$tgl.'/'.$bln.'/'.$thn }}</td>
 
               <td style="display: flex;">
-                <a href="/suratmasuk/{{$surat->idsuratkeluar}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Disposisi"><i class="fas fa-paper-plane"></i></a>
+                <a href="/suratkeluar/{{$surat->idsuratkeluar}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Disposisi"><i class="fas fa-paper-plane"></i></a>
                 <a href="{{Storage::url($surat->file_surat)}}" target="_blank" class="btn btn-info btn-sm mr-2" title="Download"><i class="fas fa-download"></i></a>
-                <a href="/suratmasuk/{{$surat->idsuratkeluar}}/edit" class="btn btn-warning btn-sm mr-2" title="Edit"><i class="fas fa-edit"></i></a>
-                <form action="/suratmasuk/{{$surat->idsuratkeluar}}" method="post">
+                <a href="/suratkeluar/{{$surat->idsuratkeluar}}/edit" class="btn btn-warning btn-sm mr-2" title="Edit"><i class="fas fa-edit"></i></a>
+                <form action="/suratkeluar/{{$surat->idsuratkeluar}}" method="post">
                    @csrf
                    @method('DELETE')
                    <button type="submit" value="delete" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></button>

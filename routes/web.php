@@ -34,13 +34,14 @@ Route::middleware('role:admin|operator')->put('/suratmasuk/{idsuratmasuk}', [App
 Route::middleware('role:admin|operator')->get('/suratmasuk/{idsuratmasuk}/edit', [App\Http\Controllers\SuratMasukController::class, 'edit']);
 Route::middleware('role:admin|operator')->post('/suratmasuk', [App\Http\Controllers\SuratMasukController::class, 'store']);
 
-//surat keluar
 
+//surat keluar
 Route::get('/suratkeluar', [App\Http\Controllers\SuratKeluarController::class, 'index']);
 Route::middleware('role:admin|operator')->get('/suratkeluar/create', [App\Http\Controllers\SuratKeluarController::class, 'create']);
-Route::middleware('role:admin|operator')->delete('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'destroy']);
-Route::middleware('role:admin|operator')->put('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'update']);
-Route::middleware('role:admin|operator')->get('/suratkeluar/{suratkeluar}/edit', [App\Http\Controllers\SuratKeluarController::class, 'edit']);
+Route::delete('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'destroy']);
+Route::put('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'update']);
+Route::get('/suratkeluar/{suratkeluar}/edit', [App\Http\Controllers\SuratKeluarController::class, 'edit']);
+Route::middleware('role:admin|operator')->post('/keluar', [App\Http\Controllers\SuratKeluarController::class, 'store']);
 
 
 
