@@ -147,13 +147,8 @@ class PenggunaController extends Controller
         }
         
         
-        $role = DB::table('model_has_roles')
-            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
-            ->select('roles.name')
-            ->where('model_has_roles.model_id', '=', Auth::id())
-            ->first();
 
-        return redirect('/pengguna');
+        return back();
     }
 
 

@@ -54,7 +54,9 @@
                 </select>
             </div>
             <!-- /.card-body -->
-            <button type="submit" class="btn btn-primary">Edit User</button>
+            
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/pengguna" type="button" class="btn btn-secondary">Cancel</a>
         <br><br><br>
         </form>
     </div>

@@ -6,6 +6,7 @@
   <h1 class="h3 mb-0 text-gray-800">Edit Surat Masuk</h1>
   <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href="/">Surat masuk</a></li>
       <li class="breadcrumb-item active" aria-current="page">Edit Surat Masuk</li>
   </ol>
   </div>
@@ -15,13 +16,13 @@
     <div class="container col-10">
         <br><br>
         <h3 class="card-title text-center">Edit Data Surat</h3>
-        <form role="form" action="/suratmasuk/{{$surat->idsuratmasuk}}" method="POST">
+        <form enctype="multipart/form-data" role="form" action="/suratmasuk/{{$surat->idsuratmasuk}}" method="POST">
             @csrf
             @method('PUT')
             <div class="form-group">
                 <br><br>
                 <label for="nomor_surat">No Surat</label>
-                <input type="text" class="form-control" id="nomor_surat" name="nomor_surat" value="{{ old ('nomor_surat',$surat->nomor_surat)}}"
+                <input type="text" class="form-control"  name="nomor_surat" id="nomor_surat" value="{{ old ('nomor_surat',$surat->nomor_surat)}}"
                     placeholder="No Surat" autocomplete="off">
                 @error('nomor_surat')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -60,7 +61,7 @@
             <div class="form-group">
                 <label for="select2SinglePlaceholder">Bagian</label>
                 <select class="select2-single-placeholder form-control" name="idbagian" id="idbagian" value="{{ old ('bagian',$surat->idbagian)}}">
-                    <option value="">Ubah Bagian</option>
+                    <option value="{{$surat->idbagian}}">Ubah Bagian</option>
                     @forelse($bagian  as $key => $bag)
                     {{$key+1}}       
                     <option value="{{$bag->id}}">{{$bag->nama_bagian}}</option>    
@@ -79,14 +80,26 @@
             </div>
 
             <div class="form-group">
+              <label for="tanggalsurat">Tanggal Surat Masuk</label>
+              <input type="date" class="form-control" name="tanggalsuratmasuk" id="tanggalsuratmasuk" value="{{ old ('tanggalsuratmasuk',$surat->tanggalsuratmasuk)}}"  >
+              @error('tanggalsuratmasuk')
+              <div class="alert alert-danger">{{ $message }}</div>
+              @enderror
+            </div>
+
+            <div class="form-group">
                 <div class="custom-file">
                     <label for="file_surat">File Surat</label>
                     <input type="file" class="form-control-file" name="file_surat" id="file_surat" value="{{ old ('file_surat','')}}" accept="image/*,application/pdf">
+                    @error('file_surat')
+                    <div class="alert alert-danger">File surat harus bertype pdf atau img</div>
+                    @enderror
                 </div>
             </div>
 
             <!-- /.card-body -->
-            <button type="submit" class="btn btn-primary">Edit Surat</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="/suratmasuk" type="button" class="btn btn-secondary">Cancel</a>
         <br><br><br>
         </form>
     </div>

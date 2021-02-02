@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use app\Models\suratmasuk;
+use App\Models\suratmasuk;
 use Illuminate\Support\Facades\Storage;
 
 class SuratMasukController extends Controller
@@ -148,16 +148,57 @@ class SuratMasukController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "idbagian" =>'required',
-            "nomor_surat" => 'required|unique:surat_masuk',
+            "idbagian" =>'nullable',
+            "nomor_surat" => 'required',
             "perihal" => 'required',
             "lampiran" =>'required',
             "pengirim" => 'required',
             "file_surat" =>['nullable', 'mimetypes:image/*,application/pdf'],
-            "tanggalsurat" => 'nullable',
-            "tanggalsuratmasuk" => 'nullable',
+            "tanggalsurat" => 'required',
+            "tanggalsuratmasuk" => 'required',
             
         ]);
+
+      
+        
+
+        if($request->hasFile('file_surat')){
+
+            $filenameWithExt = $request["file_surat"]->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request["file_surat"]->getClientOriginalExtension();
+            $filenameSimpan = $filename.'_'.time().'.'.$extension;
+            
+            $updateQ = DB::table('surat_masuk')
+                ->where('idsuratmasuk',$id)
+                ->update([
+                    'nomor_surat' => $request["nomor_surat"],
+                    'idbagian' => $request["idbagian"],
+                    'perihal' => $request["perihal"],
+                    'lampiran' =>$request["lampiran"],
+                    'pengirim' => $request["pengirim"],
+                    'file_surat' =>$request["file_surat"]->storeAs('public/suratmasuk', $filenameSimpan),
+                    'tanggalsurat' => $request["tanggalsurat"],
+                    'tanggalsuratmasuk' => $request["tanggalsuratmasuk"],
+            ]);
+
+        }   
+        else{
+            $updateQ = DB::table('surat_masuk')
+                ->where('idsuratmasuk',$id)
+                ->update([
+                    'nomor_surat' => $request["nomor_surat"],
+                    'idbagian' => $request["idbagian"],
+                    'perihal' => $request["perihal"],
+                    'lampiran' =>$request["lampiran"],
+                    'pengirim' => $request["pengirim"],
+                    'tanggalsurat' => $request["tanggalsurat"],
+                    'tanggalsuratmasuk' => $request["tanggalsuratmasuk"],
+            ]);
+
+        }
+
+        return back();
     }
 
     /**
@@ -168,7 +209,10 @@ class SuratMasukController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        suratmasuk::destroy($id);
+        
+        return redirect('/suratmasuk');
     }
 
 

@@ -41,7 +41,7 @@ Route::middleware('role:admin|operator')->get('/suratkeluar/create', [App\Http\C
 Route::delete('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'destroy']);
 Route::put('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'update']);
 Route::get('/suratkeluar/{suratkeluar}/edit', [App\Http\Controllers\SuratKeluarController::class, 'edit']);
-Route::middleware('role:admin|operator')->post('/keluar', [App\Http\Controllers\SuratKeluarController::class, 'store']);
+Route::middleware('role:admin|operator')->post('/suratkeluar', [App\Http\Controllers\SuratKeluarController::class, 'store']);
 
 
 

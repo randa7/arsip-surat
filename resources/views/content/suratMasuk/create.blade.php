@@ -6,7 +6,7 @@
   <h1 class="h3 mb-0 text-gray-800">Tambah Surat Masuk</h1>
   <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item" aria-current="page"><a href="/">Surat masuk</a></li>
+      <li class="breadcrumb-item" aria-current="page"><a href="/suratmasuk">Surat masuk</a></li>
       <li class="breadcrumb-item active" aria-current="page">Tambah Surat Masuk</li>
   </ol>
   </div>
@@ -94,6 +94,7 @@
 
 
             <button type="submit" class="btn btn-primary">Create</button>
+            <a href="/suratmasuk" type="button" class="btn btn-secondary">Cancel</a>
             <br><br><br>
         </form>
     </div>

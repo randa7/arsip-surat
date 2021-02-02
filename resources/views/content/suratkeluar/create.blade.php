@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">Tambah Surat Masuk</h1>
+  <h1 class="h3 mb-0 text-gray-800">Tambah Surat Keluar</h1>
   <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item" aria-current="page"><a href="/">Surat masuk</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Tambah Surat Masuk</li>
+      <li class="breadcrumb-item" aria-current="page"><a href="/suratkeluar">Surat keluar</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Tambah Surat Keluar</li>
   </ol>
   </div>
 
@@ -15,8 +15,8 @@
 <div class="card mb-4">
     <div class="container col-md-12">
         <br>
-        <h3 class="card-title text-center">Tambah Surat Masuk</h3>
-        <form enctype="multipart/form-data" role="form" action="/suratmasuk" method="POST">
+        <h3 class="card-title text-center">Tambah Surat Keluar</h3>
+        <form enctype="multipart/form-data" role="form" action="/suratkeluar" method="POST">
             @csrf
            
             <div class="form-group">

@@ -56,6 +56,7 @@
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Create</button>
+            <a href="/pengguna" type="button" class="btn btn-secondary">Cancel</a>
         <br><br><br>
         </form>
     </div>

@@ -10,4 +10,18 @@ class suratkeluar extends Model
     use HasFactory;
 
     protected $table = 'surat_keluar';
+    protected $primaryKey = 'idsuratkeluar';
+    public $timestamps = false;
+
+    protected $fillable = [
+        'idbagian',
+        'iduser',
+        'nomor_surat',
+        'perihal',
+        'lampiran',
+        'kepada',
+        'file_surat',
+        'tanggalsurat',
+    ];
+
 }

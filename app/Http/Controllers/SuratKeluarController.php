@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\suratkeluar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -60,7 +61,41 @@ class SuratKeluarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "idbagian" =>'required',
+            "nomor_surat" => 'required|unique:surat_keluar',
+            "perihal" => 'required',
+            "lampiran" =>'required',
+            "kepada" => 'required',
+            "file_surat" =>['required', 'mimetypes:image/*,application/pdf'],
+            "tanggalsurat" => 'required',
+            "tanggalsuratkeluar" => 'nullable',
+            
+        ]);
+
+        $date = Carbon::now()->toDateString();
+        
+        $filenameWithExt = $request["file_surat"]->getClientOriginalName();
+        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+        $extension = $request["file_surat"]->getClientOriginalExtension();
+        $filenameSimpan = $filename.'_'.time().'.'.$extension;
+        
+
+        $insertQ = DB::table('surat_keluar')->insert([
+
+            "iduser" =>Auth::id(),
+            "idbagian" =>$request["idbagian"],
+            "nomor_surat" => $request["nomor_surat"],
+            "perihal" => $request["perihal"],
+            "lampiran" =>$request["lampiran"],
+            "kepada" => $request["kepada"],
+            "file_surat" =>$request["file_surat"]->storeAs('public/suratkeluar', $filenameSimpan),
+            "tanggalsurat" => $request["tanggalsurat"],
+            "tanggalsuratkeluar" => $date,
+        ]);
+
+
+        return redirect('/suratkeluar');
     }
 
     /**
@@ -112,7 +147,58 @@ class SuratKeluarController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            "idbagian" =>'nullable',
+            "nomor_surat" => 'required',
+            "perihal" => 'required',
+            "lampiran" =>'required',
+            "kepada" => 'required',
+            "file_surat" =>['nullable', 'mimetypes:image/*,application/pdf'],
+            "tanggalsurat" => 'required',
+            "tanggalsuratkeluar" => 'required',
+            
+        ]);
+
+      
+        
+
+        if($request->hasFile('file_surat')){
+
+            $filenameWithExt = $request["file_surat"]->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request["file_surat"]->getClientOriginalExtension();
+            $filenameSimpan = $filename.'_'.time().'.'.$extension;
+            
+            $updateQ = DB::table('surat_keluar')
+                ->where('idsuratkeluar',$id)
+                ->update([
+                    'nomor_surat' => $request["nomor_surat"],
+                    'idbagian' => $request["idbagian"],
+                    'perihal' => $request["perihal"],
+                    'lampiran' =>$request["lampiran"],
+                    'kepada' => $request["kepada"],
+                    'file_surat' =>$request["file_surat"]->storeAs('public/suratkeluar', $filenameSimpan),
+                    'tanggalsurat' => $request["tanggalsurat"],
+                    'tanggalsuratkeluar' => $request["tanggalsuratkeluar"],
+            ]);
+
+        }   
+        else{
+            $updateQ = DB::table('surat_keluar')
+                ->where('idsuratkeluar',$id)
+                ->update([
+                    'nomor_surat' => $request["nomor_surat"],
+                    'idbagian' => $request["idbagian"],
+                    'perihal' => $request["perihal"],
+                    'lampiran' =>$request["lampiran"],
+                    'kepada' => $request["kepada"],
+                    'tanggalsurat' => $request["tanggalsurat"],
+                    'tanggalsuratkeluar' => $request["tanggalsuratkeluar"],
+            ]);
+
+        }
+
+        return back();
     }
 
     /**
@@ -123,6 +209,8 @@ class SuratKeluarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        suratkeluar::destroy($id);
+        
+        return redirect('/suratkeluar');
     }
 }
