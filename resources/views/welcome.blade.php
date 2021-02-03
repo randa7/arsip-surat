@@ -47,7 +47,7 @@
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="index.html">Home</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#services">Features</a></li>
           <li><a href="#contact">Contact</a></li>
           @guest
           @if (Route::has('login'))
@@ -95,9 +95,9 @@
   <section id="hero">
     <div class="hero-container">
       <h3><strong>Selamat Datang di Arsip Surat SMKN 2 Teluk Kuantan</strong></h3>
-      <h1>We're Creative Agency</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      <h1>Database Penyimpanan Surat</h1>
+      {{-- <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <a href="#about" class="btn-get-started scrollto">Get Started</a> --}}
     </div>
   </section><!-- End Hero -->
 
@@ -110,41 +110,40 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Services</h2>
-          <h3>We do offer awesome <span>Services</span></h3>
-          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+          <h2>Features</h2>
+          <h3>Features Yang Tersedia</h3>
         </div>
 
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4 class="title"><a href="">Arsip Surat</a></h4>
+              <p class="description">Database penyimpanan surat masuk & surat keluar</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <h4 class="title"><a href="">Laporan</a></h4>
+              <p class="description">Menampilkan Laporan Data surat masuk dan surat keluar</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <h4 class="title"><a href="">Disposisi</a></h4>
+              <p class="description">Pengiriman surat antar pengguna web</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <h4 class="title"><a href="">Template Surat</a></h4>
+              <p class="description">Pembuatan surat secara instan</p>
             </div>
           </div>
 
@@ -195,13 +194,13 @@
               <div class="address">
                 <i class="icofont-google-map"></i>
                 <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p>Jln. Ali raja</p>
               </div>
 
               <div class="email">
                 <i class="icofont-envelope"></i>
                 <h4>Email:</h4>
-                <p>info@example.com</p>
+                <p>Smkn2telukkuantan@sch.id</p>
               </div>
 
               <div class="phone">
