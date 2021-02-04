@@ -23,4 +23,8 @@ class suratmasuk extends Model
         'file_surat',
         'tanggalsurat',
     ];
+
+    public function bagian(){
+        return $this->belongsTo('App\Models\bagian');
+    }
 }

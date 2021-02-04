@@ -89,7 +89,7 @@ class SuratMasukController extends Controller
             "perihal" => $request["perihal"],
             "lampiran" =>$request["lampiran"],
             "pengirim" => $request["pengirim"],
-            "file_surat" =>$request["file_surat"]->storeAs('public/suratmasuk', $filenameSimpan),
+            "file_surat" =>$request["file_surat"]->store('public/suratmasuk'),
             "tanggalsurat" => $request["tanggalsurat"],
             "tanggalsuratmasuk" => $date,
         ]);
@@ -177,7 +177,7 @@ class SuratMasukController extends Controller
                     'perihal' => $request["perihal"],
                     'lampiran' =>$request["lampiran"],
                     'pengirim' => $request["pengirim"],
-                    'file_surat' =>$request["file_surat"]->storeAs('public/suratmasuk', $filenameSimpan),
+                    'file_surat' =>$request["file_surat"]->store('public/suratmasuk'),
                     'tanggalsurat' => $request["tanggalsurat"],
                     'tanggalsuratmasuk' => $request["tanggalsuratmasuk"],
             ]);
@@ -215,5 +215,38 @@ class SuratMasukController extends Controller
         return redirect('/suratmasuk');
     }
 
+    public function detail($id)
+    {
+
+        $surat = DB::table('surat_masuk')
+        ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
+        ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+        ->where('surat_masuk.idsuratmasuk', '=', $id)
+        ->first();
+
+        $role = DB::table('model_has_roles')
+        ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+        ->select('roles.name')
+        ->where('model_has_roles.model_id', '=', Auth::id())
+        ->first();
+
+        $bagian = DB::table('bagian')
+        ->select('bagian.*')
+        ->get();
+
+
+        $ext = DB::table('surat_masuk')
+        ->select('surat_masuk.file_surat')
+        ->where('surat_masuk.idsuratmasuk', '=', $id)
+        ->first();
+
+        list($a) = explode('}}',$surat->file_surat); 
+
+       
+
+       
+
+    return view('content.suratMasuk.detail',compact('surat','role' , 'bagian'));
+    }
 
 }

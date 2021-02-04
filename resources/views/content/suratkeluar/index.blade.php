@@ -15,8 +15,12 @@
     <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h3 class="text-center">Data Surat Keluar</h3>
-        <a href="suratkeluar/create" class="btn btn-primary float-right m" title="Tambahkan Surat Keluar"><i class="fas fa-plus"></i></a>
-      </div>
+        @if ($role->name == 'user')
+          {{-- <li></li> --}}
+        @else
+          <a href="suratkeluar/create" class="btn btn-primary float-right m" title="Tambahkan Surat Keluar"><i class="fas fa-plus"></i></a>
+        @endif
+        </div>
       <div class="table-responsive p-3">
         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
           <thead class="thead-light">
@@ -52,7 +56,7 @@
 
               <td style="display: flex;">
                 <a href="{{Storage::url($surat->file_surat)}}" target="_blank" class="btn btn-info btn-sm mr-2" title="Download"><i class="fas fa-download"></i></a>
-                <a href="/suratkeluar/{{$surat->idsuratkeluar}}/view" class="btn btn-success btn-sm mr-2" title="View"><i class="fas fa-eye"></i></a>
+                <a href="/suratkeluar/{{$surat->idsuratkeluar}}/detail" class="btn btn-success btn-sm mr-2" title="Detail"><i class="fas fa-eye"></i></a>
                 <a href="/suratkeluar/{{$surat->idsuratkeluar}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Disposisi"><i class="fas fa-paper-plane"></i></a>
                 <a href="/suratkeluar/{{$surat->idsuratkeluar}}/edit" class="btn btn-warning btn-sm mr-2" title="Edit"><i class="fas fa-edit"></i></a>
                 <form action="/suratkeluar/{{$surat->idsuratkeluar}}" method="post">

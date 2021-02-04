@@ -57,10 +57,8 @@
                 </div>
             </div>
             </li>
-            @if ($role->name == 'user')
-                {{-- <li></li> --}}
-            @else
-            <li class="nav-item">
+            @if ($role->name == 'admin' || $role->name == 'operator' )
+                <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
                     aria-controls="collapseForm">
                     <i class="fab fa-fw fa-wpforms"></i>
@@ -69,11 +67,13 @@
                 <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Laporan</h6>
-                    <a class="collapse-item" href="form_basics.html">Surat Masuk</a>
-                    <a class="collapse-item" href="form_advanceds.html">Surat Keluar</a>
+                    <a class="collapse-item" href="/laporansuratmasuk">Surat Masuk</a>
+                    <a class="collapse-item" href="/laporansuratmasuk">Surat Keluar</a>
                     </div>
                 </div>
                 </li>
+            @else
+
             @endif
 
             @if ($role->name == 'admin')

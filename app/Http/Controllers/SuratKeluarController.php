@@ -89,7 +89,7 @@ class SuratKeluarController extends Controller
             "perihal" => $request["perihal"],
             "lampiran" =>$request["lampiran"],
             "kepada" => $request["kepada"],
-            "file_surat" =>$request["file_surat"]->storeAs('public/suratkeluar', $filenameSimpan),
+            "file_surat" =>$request["file_surat"]->store('public/suratkeluar'),
             "tanggalsurat" => $request["tanggalsurat"],
             "tanggalsuratkeluar" => $date,
         ]);
@@ -177,7 +177,7 @@ class SuratKeluarController extends Controller
                     'perihal' => $request["perihal"],
                     'lampiran' =>$request["lampiran"],
                     'kepada' => $request["kepada"],
-                    'file_surat' =>$request["file_surat"]->storeAs('public/suratkeluar', $filenameSimpan),
+                    'file_surat' =>$request["file_surat"]->store('public/suratkeluar'),
                     'tanggalsurat' => $request["tanggalsurat"],
                     'tanggalsuratkeluar' => $request["tanggalsuratkeluar"],
             ]);
@@ -212,5 +212,28 @@ class SuratKeluarController extends Controller
         suratkeluar::destroy($id);
         
         return redirect('/suratkeluar');
+    }
+
+    public function detail($id)
+    {
+        
+        $surat = DB::table('surat_keluar')
+        ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
+        ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+        ->where('surat_keluar.idsuratkeluar', '=', $id)
+        ->first();
+
+        $role = DB::table('model_has_roles')
+        ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+        ->select('roles.name')
+        ->where('model_has_roles.model_id', '=', Auth::id())
+        ->first();
+
+        $bagian = DB::table('bagian')
+        ->select('bagian.*')
+        ->get();
+
+
+    return view('content.suratkeluar.detail',compact('surat','role' , 'bagian' ));
     }
 }
