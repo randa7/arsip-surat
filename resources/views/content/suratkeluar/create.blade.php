@@ -61,7 +61,7 @@
             <div class="form-group">
                 <label for="select2SinglePlaceholder">Bagian</label>
                 <select class="select2-single-placeholder form-control" name="idbagian" id="idbagian" value="{{ old ('bagian','')}}">
-                    <option value="#">Pilih Bagian</option>
+                    <option></option>
                     @forelse($bagian  as $key => $bag)
                     {{$key+1}}       
                     <option value="{{$bag->id}}">{{$bag->nama_bagian}}</option>    
@@ -94,6 +94,7 @@
 
 
             <button type="submit" class="btn btn-primary">Create</button>
+            <a href="/suratkeluar" type="button" class="btn btn-secondary">Kembali</a>
             <br><br><br>
         </form>
     </div>

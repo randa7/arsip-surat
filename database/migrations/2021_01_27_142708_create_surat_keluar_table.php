@@ -17,12 +17,13 @@ class CreateSuratKeluarTable extends Migration
             $table->id('idsuratkeluar');
             $table->unsignedBigInteger('idbagian');
             $table->unsignedBigInteger('iduser');
+            $table->unsignedBigInteger('iddisposisi')->nullable()->default(NULL);
             $table->string('nomor_surat');
             $table->string('perihal');
             $table->string('lampiran');
             
             $table->string('kepada');
-            $table->string('file_surat');
+            $table->string('file_surat')->nullable();
             $table->date('tanggalsurat');
             $table->date('tanggalsuratkeluar');
 

@@ -67,7 +67,7 @@ class SuratKeluarController extends Controller
             "perihal" => 'required',
             "lampiran" =>'required',
             "kepada" => 'required',
-            "file_surat" =>['required', 'mimetypes:image/*,application/pdf'],
+            "file_surat" =>['nullable', 'mimetypes:image/*,application/pdf'],
             "tanggalsurat" => 'required',
             "tanggalsuratkeluar" => 'nullable',
             
@@ -75,24 +75,37 @@ class SuratKeluarController extends Controller
 
         $date = Carbon::now()->toDateString();
         
-        $filenameWithExt = $request["file_surat"]->getClientOriginalName();
-        $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-        $extension = $request["file_surat"]->getClientOriginalExtension();
-        $filenameSimpan = $filename.'_'.time().'.'.$extension;
+
+        if($request->hasFile('file_surat')) {
+
+            $insertQ = DB::table('surat_keluar')->insert([
+
+                "iduser" =>Auth::id(),
+                "idbagian" =>$request["idbagian"],
+                "nomor_surat" => $request["nomor_surat"],
+                "perihal" => $request["perihal"],
+                "lampiran" =>$request["lampiran"],
+                "kepada" => $request["kepada"],
+                "file_surat" =>$request["file_surat"]->store('public/suratkeluar'),
+                "tanggalsurat" => $request["tanggalsurat"],
+                "tanggalsuratkeluar" => $date,
+            ]);
+        }
+        else{
+
+            $insertQ = DB::table('surat_keluar')->insert([
+
+                "iduser" =>Auth::id(),
+                "idbagian" =>$request["idbagian"],
+                "nomor_surat" => $request["nomor_surat"],
+                "perihal" => $request["perihal"],
+                "lampiran" =>$request["lampiran"],
+                "kepada" => $request["kepada"],
+                "tanggalsurat" => $request["tanggalsurat"],
+                "tanggalsuratkeluar" => $date,
+            ]);
+        }
         
-
-        $insertQ = DB::table('surat_keluar')->insert([
-
-            "iduser" =>Auth::id(),
-            "idbagian" =>$request["idbagian"],
-            "nomor_surat" => $request["nomor_surat"],
-            "perihal" => $request["perihal"],
-            "lampiran" =>$request["lampiran"],
-            "kepada" => $request["kepada"],
-            "file_surat" =>$request["file_surat"]->store('public/suratkeluar'),
-            "tanggalsurat" => $request["tanggalsurat"],
-            "tanggalsuratkeluar" => $date,
-        ]);
 
 
         return redirect('/suratkeluar');
@@ -236,4 +249,25 @@ class SuratKeluarController extends Controller
 
     return view('content.suratkeluar.detail',compact('surat','role' , 'bagian' ));
     }
+
+    public function disposisi($id)
+    {
+        
+        $surat = suratkeluar::find($id);
+
+        $role = DB::table('model_has_roles')
+        ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+        ->select('roles.name')
+        ->where('model_has_roles.model_id', '=', Auth::id())
+        ->first();
+
+        $users = DB::table('users')
+        ->select('users.*')
+        ->where('users.id', '<>' , Auth::id())
+        ->get();
+
+
+    return view('content.suratkeluar.disposisi',compact('surat','role' ,'users'));
+    }
+
 }

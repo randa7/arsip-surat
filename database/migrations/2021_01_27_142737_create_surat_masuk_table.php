@@ -17,12 +17,13 @@ class CreateSuratMasukTable extends Migration
 			$table->id('idsuratmasuk');
             $table->unsignedBigInteger('idbagian');
             $table->unsignedBigInteger('iduser');
+            $table->unsignedBigInteger('iddisposisi')->nullable()->default(NULL);
             $table->string('nomor_surat');
             $table->string('perihal');
             $table->string('lampiran');
             $table->string('pengirim');
             
-            $table->string('file_surat');
+            $table->string('file_surat')->nullable();
             $table->date('tanggalsurat');
             $table->date('tanggalsuratmasuk');
 

@@ -37,12 +37,13 @@
             Features
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="/pengguna">
+                <a class="nav-link" href="/profile">
                     <i class="fas fa-user"></i>
                     <span>Profile</span>
                 </a>
             </li>
             
+
             <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
                 aria-controls="collapseTable">
@@ -73,8 +74,25 @@
                 </div>
                 </li>
             @else
-
             @endif
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
+                  aria-controls="collapsePage">
+                  <i class="fas fa-fw fa-columns"></i>
+                  <span>Template Surat</span>
+                </a>
+                <div id="collapsePage" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Template Surat</h6>
+                    <a class="collapse-item" href="/surattatausaha">Tata Usaha</a>
+                    <a class="collapse-item" href="/suratkesiswaan">Kesiswaan</a>
+                    <a class="collapse-item" href="/suratkurikulum">Kurikulum</a>
+                    <a class="collapse-item" href="/suratsaranagudang">Sarana & Gudang</a>
+                    <a class="collapse-item" href="/surathumas">Hubungan Masyarakat</a>
+                    </div>
+                </div>
+            </li>
 
             @if ($role->name == 'admin')
                 <li class="nav-item">
@@ -85,6 +103,8 @@
                 </li>
             @else 
             @endif
+
+ 
         </ul>
         <!-- Sidebar -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -100,7 +120,12 @@
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
+                    @if(Auth::user()->image == NULL)
                     <img class="img-profile rounded-circle" src="{{asset('assets/img/boy.png')}}" style="max-width: 60px">
+                    @else
+                    <img class="img-profile rounded-circle" src="{{ Storage::url(Auth::user()->image) }}" style="max-width: 60px">
+                    @endif
+                    
                     <span class="ml-2 d-none d-lg-inline text-white small">{{ Auth::user()->name }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

@@ -54,28 +54,31 @@
               <td width="40%">Tanggal Surat Keluar </td>
               <td>{{$tgl.'/'.$bln.'/'.$thn }}</td>
             </tr>
-
-            <?php 
-            list($a, $b, $c) = explode('/',$surat->file_surat);    
+            @if($surat->file_surat == NULL)
             
-            list($q, $w) = explode('.',$c);    
-            ?>
-            @if($w == 'pdf')
-            <tr>
-              <td width="40%">Preview File Surat </td>
-            </tr>
-            <tr>
- 
-              <td colspan="2" class="class='embed-responsive'" ><iframe src="{{ Storage::url($surat->file_surat) }}"  width="100%" height="875" 
-                  type="application/pdf"> </iframe></td>
-            </tr>
-            @else()
-            
-            <tr>
-              <td width="40%">Preview File Surat </td>
-              <td colspan><img src="{{ Storage::url($surat->file_surat) }}" width="80%" height="auto" 
-                > </td>
-            </tr>
+            @else
+              <?php 
+              list($a, $b, $c) = explode('/',$surat->file_surat);    
+              
+              list($q, $w) = explode('.',$c);    
+              ?>
+              @if($w == 'pdf')
+              <tr>
+                <td width="40%">Preview File Surat </td>
+              </tr>
+              <tr>
+  
+                <td colspan="2" class="class='embed-responsive'" ><iframe src="{{ Storage::url($surat->file_surat) }}"  width="100%" height="875" 
+                    type="application/pdf"> </iframe></td>
+              </tr>
+              @else()
+              
+              <tr>
+                <td width="40%">Preview File Surat </td>
+                <td colspan><img src="{{ Storage::url($surat->file_surat) }}" width="80%" height="auto" 
+                  > </td>
+              </tr>
+              @endif
             @endif
          
             
