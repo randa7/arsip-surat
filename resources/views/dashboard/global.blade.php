@@ -69,7 +69,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Laporan</h6>
                     <a class="collapse-item" href="/laporansuratmasuk">Surat Masuk</a>
-                    <a class="collapse-item" href="/laporansuratmasuk">Surat Keluar</a>
+                    <a class="collapse-item" href="/laporansuratkeluar">Surat Keluar</a>
                     </div>
                 </div>
                 </li>

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\suratkeluar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\suratmasuk;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
 class SuratMasukController extends Controller
@@ -266,7 +268,57 @@ class SuratMasukController extends Controller
         ->where('users.id', '<>' , Auth::id())
         ->get();
 
-
     return view('content.suratmasuk.disposisi',compact('surat','role' ,'users'));
     }
+
+    public function kirim(Request $request , $id)
+    {
+        $request->validate([
+            "iduser" =>'required', 
+        ]);
+
+        $surat = suratmasuk::find($id);
+        $date = Carbon::now()->toDateString();
+        $user = User::find($request["iduser"]);
+
+
+        $disposisi = DB::table('disposisi')->insertGetId([
+        
+            "pengirim" =>Auth::user()->name,
+            "penerima" =>$user->name,
+        ]);
+
+
+
+        $suratmasukbaru = suratmasuk::create([
+            "iduser" =>$request["iduser"],
+            "idbagian" =>$surat->idbagian,
+            "iddisposisi" =>$disposisi,
+            "nomor_surat" => $surat->nomor_surat,
+            "perihal" => $surat->perihal,
+            "lampiran" =>$surat->lampiran,
+            "pengirim" => Auth::user()->name,
+            "file_surat" =>$surat->file_surat,
+            "tanggalsurat" => $surat->tanggalsurat,
+            "tanggalsuratmasuk" => $date,
+        ]);
+
+        $suratkeluarbaru = suratkeluar::create([
+            "iduser" => Auth::id(),
+            "idbagian" =>$surat->idbagian,
+            "iddisposisi" =>$disposisi,
+            "nomor_surat" => $surat->nomor_surat,
+            "perihal" => $surat->perihal,
+            "lampiran" =>$surat->lampiran,
+            "kepada" => $user->name,
+            "file_surat" =>$surat->file_surat,
+            "tanggalsurat" => $surat->tanggalsurat,
+            "tanggalsuratkeluar" => $date,
+        ]);
+
+
+        return redirect('/suratkeluar');
+
+    }
+
 }

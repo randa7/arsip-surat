@@ -16,12 +16,14 @@ class suratmasuk extends Model
     protected $fillable = [
         'idbagian',
         'iduser',
+        'iddisposisi',
         'nomor_surat',
         'perihal',
         'lampiran',
         'pengirim',
         'file_surat',
         'tanggalsurat',
+        'tanggalsuratmasuk'
     ];
 
     public function bagian(){

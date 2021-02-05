@@ -31,12 +31,12 @@ Route::put('/profile/update', [App\Http\Controllers\HomeController::class, 'upda
 Route::get('/suratmasuk', [App\Http\Controllers\SuratMasukController::class, 'index']);
 Route::middleware('role:admin|operator')->get('/suratmasuk/create', [App\Http\Controllers\SuratMasukController::class, 'create']);
 Route::middleware('role:admin|operator')->post('/suratmasuk', [App\Http\Controllers\SuratMasukController::class, 'store']);
-
 Route::delete('/suratmasuk/{idsuratmasuk}', [App\Http\Controllers\SuratMasukController::class, 'destroy']);
 Route::put('/suratmasuk/{idsuratmasuk}', [App\Http\Controllers\SuratMasukController::class, 'update']);
 Route::get('/suratmasuk/{idsuratmasuk}/edit', [App\Http\Controllers\SuratMasukController::class, 'edit']);
 Route::get('/suratmasuk/{idsuratmasuk}/detail', [App\Http\Controllers\SuratMasukController::class, 'detail']);
 Route::get('/suratmasuk/{idsuratmasuk}/disposisi', [App\Http\Controllers\SuratMasukController::class, 'disposisi']);
+Route::put('/suratmasuk/{idsuratmasuk}', [App\Http\Controllers\SuratMasukController::class, 'kirim']);
 
 //surat keluar
 Route::get('/suratkeluar', [App\Http\Controllers\SuratKeluarController::class, 'index']);
@@ -47,6 +47,7 @@ Route::put('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarContro
 Route::get('/suratkeluar/{suratkeluar}/edit', [App\Http\Controllers\SuratKeluarController::class, 'edit']);
 Route::get('/suratkeluar/{suratkeluar}/detail', [App\Http\Controllers\SuratKeluarController::class, 'detail']);
 Route::get('/suratkeluar/{suratkeluar}/disposisi', [App\Http\Controllers\SuratKeluarController::class, 'disposisi']);
+Route::put('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'kirim']);
 
 
 

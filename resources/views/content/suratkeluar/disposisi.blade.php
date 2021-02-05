@@ -16,9 +16,10 @@
     <div class="container col-md-12">
         <br>
         <h3 class="card-title text-center">Disposisi Surat</h3>
-        <form role="form" action="/suratkeluar" method="POST">
+        <form enctype="multipart/form-data" role="form" action="/suratkeluar/{{$surat->idsuratkeluar}}" method="POST">
             @csrf
-           
+            @method('PUT')
+
             <div class="form-group">
                 <br><br>
                 <label for="nomor_surat">No Surat</label>
@@ -52,13 +53,16 @@
 
             <div class="form-group">
                 <label for="select2SinglePlaceholder">Kirim Kepada</label>
-                <select class="select2-single-placeholder form-control" name="kepada" id="kepada" value="{{ old ('kepada','')}}">
+                <select class="select2-single-placeholder form-control" name="iduser" id="iduser" value="{{ old ('iduser','')}}" required>
                     <option></option>
                     @forelse($users  as $user => $key)     
-                    <option value="{{$key->name}}">{{$key->name}}</option>    
+                    <option value="{{$key->id}}">{{$key->name}}</option>    
                     @empty
                     <option value="1">Tidak Ada User</option> 
-                  @endforelse        
+                  @endforelse 
+                  @error('iduser')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                  @enderror       
                 </select>
             </div>
  

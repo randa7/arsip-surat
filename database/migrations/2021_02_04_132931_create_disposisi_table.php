@@ -19,6 +19,8 @@ class CreateDisposisiTable extends Migration
             $table->string('pengirim');
             $table->string('penerima');
             $table->timestamps(); 
+
+            
         });
     }
 
