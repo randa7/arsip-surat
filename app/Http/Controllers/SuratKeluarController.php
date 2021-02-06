@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\suratmasuk;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
+
 use Illuminate\Support\Facades\Storage;
 
 class SuratKeluarController extends Controller
@@ -110,7 +112,7 @@ class SuratKeluarController extends Controller
         
 
 
-        return redirect('/suratkeluar');
+        return redirect('/suratkeluar')->with('toast_success','Surat Berhasil ditambahkan');
     }
 
     /**
@@ -163,7 +165,7 @@ class SuratKeluarController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "idbagian" =>'nullable',
+            "idbagian" =>'required',
             "nomor_surat" => 'required',
             "perihal" => 'required',
             "lampiran" =>'required',
@@ -171,18 +173,13 @@ class SuratKeluarController extends Controller
             "file_surat" =>['nullable', 'mimetypes:image/*,application/pdf'],
             "tanggalsurat" => 'required',
             "tanggalsuratkeluar" => 'required',
-            
         ]);
 
       
         
 
-        if($request->hasFile('file_surat')){
+        if($request->filled('file_surat')){
 
-            $filenameWithExt = $request["file_surat"]->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request["file_surat"]->getClientOriginalExtension();
-            $filenameSimpan = $filename.'_'.time().'.'.$extension;
             
             $updateQ = DB::table('surat_keluar')
                 ->where('idsuratkeluar',$id)
@@ -213,7 +210,7 @@ class SuratKeluarController extends Controller
 
         }
 
-        return back();
+        return back()->with('toast_success','Data Surat Berhasil diubah');
     }
 
     /**
@@ -226,7 +223,7 @@ class SuratKeluarController extends Controller
     {
         suratkeluar::destroy($id);
         
-        return redirect('/suratkeluar');
+        return redirect('/suratkeluar')->with('toast_success','Surat Berhasil dihapus');
     }
 
     public function detail($id)
@@ -318,7 +315,7 @@ class SuratKeluarController extends Controller
         ]);
 
 
-        return redirect('/suratkeluar');
+        return redirect('/suratkeluar')->with('toast_success','Surat Berhasil didisposisikan');
 
     }    
 

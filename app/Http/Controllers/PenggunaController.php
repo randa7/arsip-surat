@@ -74,7 +74,7 @@ class PenggunaController extends Controller
         $insertQ->assignRole($request["role"]);
 
 
-        return redirect('/pengguna');
+        return redirect('/pengguna')->with('toast_success','Data Pengguna Berhasil ditambahkan');
     }
 
     /**
@@ -148,7 +148,7 @@ class PenggunaController extends Controller
         
         
 
-        return back();
+        return back()->with('toast_success','Data Pengguna Berhasil diubah');
     }
 
 

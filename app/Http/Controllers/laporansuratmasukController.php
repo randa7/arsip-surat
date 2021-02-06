@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\suratmasuk;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,4 +27,63 @@ class laporansuratmasukController extends Controller
        
             return view('content.laporansuratmasuk.index',compact('suratmasuk','role'));
     }
+
+
+    public function excel(Request $request)
+    {
+        $from = $request["start"];
+        $to = $request["end"];
+        $date = Carbon::now()->toDateString();
+        $begin = Carbon::createFromFormat('d-m-Y', '00-00-0000');
+
+        $role = DB::table('model_has_roles')
+        ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+        ->select('roles.name')
+        ->where('model_has_roles.model_id', '=', Auth::id())
+        ->first();
+
+        switch ($request->input('action')) {
+            case 'cari':
+
+                if($request->filled('start') && $request->filled('end')){
+                    $suratmasuk = DB::table('surat_masuk')
+                    ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
+                    ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->whereBetween('tanggalsurat', [$from, $to])
+                    ->get();
+                }
+
+                elseif($request->filled('start') && !$request->filled('end')){
+                    $suratmasuk = DB::table('surat_masuk')
+                    ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
+                    ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->whereBetween('tanggalsurat', [$from, Carbon::now()])
+                    ->get();
+                }
+
+                elseif(!$request->filled('start') && $request->filled('end')){
+                    $suratmasuk = DB::table('surat_masuk')
+                    ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
+                    ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->whereBetween('tanggalsurat', [$begin, $to])
+                    ->get();
+                }
+                else{
+                    $suratmasuk = DB::table('surat_masuk')
+                    ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
+                    ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->get();
+                }
+
+                return view('content.laporansuratmasuk.index',compact('suratmasuk','role'));
+
+                break;
+    
+            case 'export':
+
+                // Preview model
+                break;
+        }
+    }
+
 }

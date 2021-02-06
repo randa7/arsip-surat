@@ -16,7 +16,7 @@
     <div class="container col-md-12">
         <br>
         <h3 class="card-title text-center">Disposisi Surat</h3>
-        <form enctype="multipart/form-data" role="form" action="/suratkeluar/{{$surat->idsuratkeluar}}" method="POST">
+        <form enctype="multipart/form-data" role="form" action="/suratkeluar/disposisi/{{$surat->idsuratkeluar}}" method="POST">
             @csrf
             @method('PUT')
 
@@ -65,7 +65,6 @@
                   @enderror       
                 </select>
             </div>
- 
 
 
             <button type="submit" class="btn btn-primary">Disposisi</button>
@@ -75,6 +74,7 @@
     </div>
 </div>
 <br>
+
 @endsection
 
 @push('scripts')

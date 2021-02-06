@@ -17,7 +17,7 @@ class CreateSuratKeluarTable extends Migration
             $table->id('idsuratkeluar');
             $table->unsignedBigInteger('idbagian');
             $table->unsignedBigInteger('iduser');
-            $table->unsignedBigInteger('iddisposisi')->nullable()->default(NULL);
+            $table->unsignedBigInteger('iddisposisi')->nullable();
             $table->string('nomor_surat');
             $table->string('perihal');
             $table->string('lampiran');

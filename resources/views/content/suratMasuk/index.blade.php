@@ -59,14 +59,33 @@
                 <a href="/suratmasuk/{{$surat->idsuratmasuk}}/detail" class="btn btn-success btn-sm mr-2" title="Detail"><i class="fas fa-eye"></i></a>
                 <a href="/suratmasuk/{{$surat->idsuratmasuk}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Disposisi"><i class="fas fa-paper-plane"></i></a>
                 <a href="/suratmasuk/{{$surat->idsuratmasuk}}/edit" class="btn btn-warning btn-sm mr-2" title="Edit"><i class="fas fa-edit"></i></a>
-                
-                <form action="/suratmasuk/{{$surat->idsuratmasuk}}" method="post">
-                   @csrf
-                   @method('DELETE')
-                   <button type="submit" value="delete" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></button>
-                </form>
-             </td>
+                <a href="javascript:void(0);" data-toggle="modal" data-target="#hapusModal" class="btn btn-danger btn-sm mr-2" title="Hapus"><i class="fas fa-trash"></i></a>
+              </td>
             </tr>
+            <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Hapus Data</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Yakin akan menghapus data ?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <form action="/suratmasuk/{{$surat->idsuratmasuk}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" value="delete" class="btn btn-outline-danger " title="Hapus">Hapus</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
             @empty
             <tr>
                <td colspan="8" align="center">Data Tidak Ditemukan</td>
@@ -79,6 +98,14 @@
     </div>
   </div>
 </div>
+
+
+                
+
+
+          <!-- Hapus Logout -->
+
+
 @endsection
 
 

@@ -16,9 +16,7 @@ class ForeignKeySuratKeluar extends Migration
         Schema::table('surat_keluar', function (Blueprint $table) {
 
             $table->foreign('iddisposisi')
-                ->references('id')->on('disposisi')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->references('id')->on('disposisi');
         });
     }
 

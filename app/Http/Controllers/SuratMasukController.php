@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\suratmasuk;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
+
 use Illuminate\Support\Facades\Storage;
 
 class SuratMasukController extends Controller
@@ -80,7 +82,7 @@ class SuratMasukController extends Controller
         
 
         
-        if($request->hasFile('file_surat')) {
+        if($request->filled('file_surat')) {
             $insertQ = DB::table('surat_masuk')->insert([
                 "iduser" =>Auth::id(),
                 "idbagian" =>$request["idbagian"],
@@ -110,7 +112,7 @@ class SuratMasukController extends Controller
         }
 
 
-        return redirect('/suratmasuk');
+        return redirect('/suratmasuk')->with('toast_success','Surat Berhasil ditambahkan');
     }
 
     /**
@@ -163,7 +165,7 @@ class SuratMasukController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "idbagian" =>'nullable',
+            "idbagian" =>'required',
             "nomor_surat" => 'required',
             "perihal" => 'required',
             "lampiran" =>'required',
@@ -177,13 +179,8 @@ class SuratMasukController extends Controller
       
         
 
-        if($request->hasFile('file_surat')){
+        if($request->filled('file_surat')){
 
-            $filenameWithExt = $request["file_surat"]->getClientOriginalName();
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            $extension = $request["file_surat"]->getClientOriginalExtension();
-            $filenameSimpan = $filename.'_'.time().'.'.$extension;
-            
             $updateQ = DB::table('surat_masuk')
                 ->where('idsuratmasuk',$id)
                 ->update([
@@ -213,7 +210,7 @@ class SuratMasukController extends Controller
 
         }
 
-        return back();
+        return back()->with('toast_success','Data Surat Berhasil diubah');
     }
 
     /**
@@ -317,7 +314,7 @@ class SuratMasukController extends Controller
         ]);
 
 
-        return redirect('/suratkeluar');
+        return redirect('/suratkeluar')->with('toast_success','Surat Berhasil didisposisi');
 
     }
 

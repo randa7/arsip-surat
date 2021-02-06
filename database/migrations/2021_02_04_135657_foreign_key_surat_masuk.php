@@ -16,9 +16,7 @@ class ForeignKeySuratMasuk extends Migration
         Schema::table('surat_masuk', function (Blueprint $table) {
 
             $table->foreign('iddisposisi')
-                ->references('id')->on('disposisi')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->references('id')->on('disposisi');
         });
     }
 

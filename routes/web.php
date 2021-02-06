@@ -23,7 +23,7 @@ Route::get('/home', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::middleware('role:admin|operator|user')->get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::put('/profile/update', [App\Http\Controllers\HomeController::class, 'update']);
 
@@ -32,34 +32,36 @@ Route::get('/suratmasuk', [App\Http\Controllers\SuratMasukController::class, 'in
 Route::middleware('role:admin|operator')->get('/suratmasuk/create', [App\Http\Controllers\SuratMasukController::class, 'create']);
 Route::middleware('role:admin|operator')->post('/suratmasuk', [App\Http\Controllers\SuratMasukController::class, 'store']);
 Route::delete('/suratmasuk/{idsuratmasuk}', [App\Http\Controllers\SuratMasukController::class, 'destroy']);
-Route::put('/suratmasuk/{idsuratmasuk}', [App\Http\Controllers\SuratMasukController::class, 'update']);
-Route::get('/suratmasuk/{idsuratmasuk}/edit', [App\Http\Controllers\SuratMasukController::class, 'edit']);
-Route::get('/suratmasuk/{idsuratmasuk}/detail', [App\Http\Controllers\SuratMasukController::class, 'detail']);
-Route::get('/suratmasuk/{idsuratmasuk}/disposisi', [App\Http\Controllers\SuratMasukController::class, 'disposisi']);
-Route::put('/suratmasuk/{idsuratmasuk}', [App\Http\Controllers\SuratMasukController::class, 'kirim']);
+Route::put('/suratmasuk/{idsurat}', [App\Http\Controllers\SuratMasukController::class, 'update']);
+Route::get('/suratmasuk/{suratmasuk}/edit', [App\Http\Controllers\SuratMasukController::class, 'edit']);
+Route::get('/suratmasuk/{suratmasuk}/detail', [App\Http\Controllers\SuratMasukController::class, 'detail']);
+Route::get('/suratmasuk/{suratmasuk}/disposisi', [App\Http\Controllers\SuratMasukController::class, 'disposisi']);
+Route::put('/suratmasuk/disposisi/{idsurat}', [App\Http\Controllers\SuratMasukController::class, 'kirim']);
 
 //surat keluar
 Route::get('/suratkeluar', [App\Http\Controllers\SuratKeluarController::class, 'index']);
 Route::middleware('role:admin|operator')->get('/suratkeluar/create', [App\Http\Controllers\SuratKeluarController::class, 'create']);
 Route::middleware('role:admin|operator')->post('/suratkeluar', [App\Http\Controllers\SuratKeluarController::class, 'store']);
 Route::delete('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'destroy']);
-Route::put('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'update']);
+Route::put('/suratkeluar/{idsurat}', [App\Http\Controllers\SuratKeluarController::class, 'update']);
 Route::get('/suratkeluar/{suratkeluar}/edit', [App\Http\Controllers\SuratKeluarController::class, 'edit']);
 Route::get('/suratkeluar/{suratkeluar}/detail', [App\Http\Controllers\SuratKeluarController::class, 'detail']);
 Route::get('/suratkeluar/{suratkeluar}/disposisi', [App\Http\Controllers\SuratKeluarController::class, 'disposisi']);
-Route::put('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'kirim']);
-
-
-
+Route::put('/suratkeluar/disposisi/{idsurat}', [App\Http\Controllers\SuratKeluarController::class, 'kirim']);
 
 //admin
-
 Route::middleware('role:admin')->resource('pengguna', App\Http\Controllers\PenggunaController::class);
 
 
 //laporan
 
 Route::middleware('role:admin|operator')->get('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'index'])->name('laporansuratmasuk');
+Route::middleware('role:admin|operator')->post('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'excel']);
+
+
+
 Route::middleware('role:admin|operator')->get('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'index'])->name('laporansuratkeluar');
+Route::middleware('role:admin|operator')->post('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'excel']);
+
 
 //user

@@ -16,7 +16,7 @@
     <div class="container col-md-12">
         <br>
         <h3 class="card-title text-center">Disposisi Surat</h3>
-        <form enctype="multipart/form-data" role="form" action="/suratmasuk/{{$surat->idsuratmasuk}}" method="POST">
+        <form enctype="multipart/form-data" role="form" action="/suratmasuk/disposisi/{{$surat->idsuratmasuk}}" method="POST">
             @csrf
             @method('PUT')
 

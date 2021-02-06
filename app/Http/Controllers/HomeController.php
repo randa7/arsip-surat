@@ -111,14 +111,8 @@ class HomeController extends Controller
                 'email' => $request["email"],
             ]);
         }
-    
 
-
-
-        
-        
-
-        return back();
+        return back()->with('toast_success','Data Profile Berhasil diubah');
     }
 
 }

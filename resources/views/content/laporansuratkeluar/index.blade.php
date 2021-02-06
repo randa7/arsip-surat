@@ -15,8 +15,29 @@
     <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h3 class="text-center">Data Laporan Surat Keluar</h3>
-        <a href="suratmasuk/create" class="btn btn-success float-right m" title="Export Excel"><i class="fas fa-file-csv"></i> Export Excel</a>
       </div>
+    
+
+          <form role="form" action="/laporansuratkeluar" class="form-horizontal" method="POST">
+            @csrf
+              <div class="form-row">
+                <div class="col-md-5 form-group" style="margin-left: 1%">
+                  <div class="input-daterange input-group">
+                    <input type="date" class="input-sm form-control" name="start" id="start" value="{{ old ('start','')}}" autocomplete="off"/>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">to</span>
+                    </div>
+                    <input type="date" class="input-sm form-control" name="end" id="end" value="{{ old ('end','')}}"  autocomplete="off" />
+                  </div>
+                </div>
+                <div class="col-md">
+                  <button type="submit" class="btn btn-primary" name="action" value="cari" ><i class="fas fa-search"></i> Sort</button>
+                  <button type="submit" class="btn btn-success" name="action" value="export" ><i class="fas fa-file-csv"></i> Export Excel</button>
+                </div>
+              </div>
+          </tr>
+          </form>
+  
       <div class="table-responsive p-3">
         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
           <thead class="thead-light">
@@ -68,12 +89,23 @@
 @push('scripts')
   <script src="{{asset('assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
-      <!-- Page level custom scripts -->
+  <script src="{{asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+
   <script>
     $(function () {
 
       $(" #dataTableHover").DataTable(); // ID From dataTable with Hover
+
+
+      $('#simple-date4 .input-daterange').datepicker({        
+        format: 'dd/mm/yyyy',        
+        autoclose: true,     
+        todayHighlight: true,   
+        todayBtn: 'linked',
+      });  
     });
+
   </script>
+
 
 @endpush
