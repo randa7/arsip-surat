@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\LaporansuratkeluarExport;
+use Excel;
 use PDF;
 
 
@@ -112,6 +114,33 @@ class laporansuratkeluarController extends Controller
 
                 $pdf = PDF::loadView('pdf',compact('suratkeluar'));
                 return $pdf->download('laporan.pdf');
+
+                break;
+
+            case 'csv':
+
+                if($request->filled('start') && $request->filled('end')){
+                    $from = $from;
+                    $to = $to;
+                }
+
+                elseif($request->filled('start') && !$request->filled('end')){
+                    $from = $from;
+                    $to = Carbon::now();
+
+                }
+
+                elseif(!$request->filled('start') && $request->filled('end')){
+                    $from = $begin;
+                    $to = $to;
+                    
+                }
+                else{
+                    $from = $begin;
+                    $to = Carbon::now();
+                }   
+                
+                return Excel::download(new LaporansuratkeluarExport($from,$to), 'laporansuratkeluar.xlsx');
 
                 break;
         }

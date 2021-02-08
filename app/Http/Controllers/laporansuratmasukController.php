@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\LaporansuratmasukExport;
+use Excel;
+
 use PDF;
 
 class laporansuratmasukController extends Controller
@@ -115,6 +118,33 @@ class laporansuratmasukController extends Controller
 
                 $pdf = PDF::loadView('pdf2',compact('suratmasuk'));
                 return $pdf->download('laporan.pdf');
+
+                break;
+
+            case 'csv':
+
+                if($request->filled('start') && $request->filled('end')){
+                    $from = $from;
+                    $to = $to;
+                }
+
+                elseif($request->filled('start') && !$request->filled('end')){
+                    $from = $from;
+                    $to = Carbon::now();
+
+                }
+
+                elseif(!$request->filled('start') && $request->filled('end')){
+                    $from = $begin;
+                    $to = $to;
+                    
+                }
+                else{
+                    $from = $begin;
+                    $to = Carbon::now();
+                }
+
+                return Excel::download(new LaporansuratmasukExport($from,$to), 'laporansuratmasuk.xlsx');
 
                 break;
         }
