@@ -86,11 +86,11 @@
                 <div id="collapsePage" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Template Surat</h6>
-                    <a class="collapse-item" href="/surattatausaha">Tata Usaha</a>
-                    <a class="collapse-item" href="/suratkesiswaan">Kesiswaan</a>
-                    <a class="collapse-item" href="/suratkurikulum">Kurikulum</a>
-                    <a class="collapse-item" href="/suratsaranagudang">Sarana & Gudang</a>
-                    <a class="collapse-item" href="/surathumas">Hubungan Masyarakat</a>
+                    <a class="collapse-item" href="/template/tatausaha">Tata Usaha</a>
+                    <a class="collapse-item" href="/template/kesiswaan">Kesiswaan</a>
+                    <a class="collapse-item" href="/template/kurikulum">Kurikulum</a>
+                    <a class="collapse-item" href="/template/sarana">Sarana & Gudang</a>
+                    <a class="collapse-item" href="/template/humas">Hubungan Masyarakat</a>
                     </div>
                 </div>
             </li>
@@ -194,9 +194,7 @@
         <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
         <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-        <script src="{{asset('assets/js/ruang-admin.min.js')}}"></script>
-        <script src="{{asset('assets/vendor/chart.js/Chart.min.js')}}"></script>
-        <script src="{{asset('assets/js/demo/chart-area-demo.js')}}"></script>
+        
         @stack('scripts')
     </body>
 

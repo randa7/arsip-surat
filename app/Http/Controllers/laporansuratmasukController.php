@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use PDF;
 
 class laporansuratmasukController extends Controller
 {
@@ -79,9 +79,43 @@ class laporansuratmasukController extends Controller
 
                 break;
     
-            case 'export':
+            case 'pdf':
 
-                // Preview model
+                
+                if($request->filled('start') && $request->filled('end')){
+                    $suratmasuk = DB::table('surat_masuk')
+                    ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
+                    ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->whereBetween('tanggalsurat', [$from, $to])
+                    ->get();
+                }
+
+                elseif($request->filled('start') && !$request->filled('end')){
+                    $suratmasuk = DB::table('surat_masuk')
+                    ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
+                    ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->whereBetween('tanggalsurat', [$from, Carbon::now()])
+                    ->get();
+                }
+
+                elseif(!$request->filled('start') && $request->filled('end')){
+                    $suratmasuk = DB::table('surat_masuk')
+                    ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
+                    ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->whereBetween('tanggalsurat', [$begin, $to])
+                    ->get();
+                }
+                else{
+                    $suratmasuk = DB::table('surat_masuk')
+                    ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
+                    ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->get();
+                }
+
+
+                $pdf = PDF::loadView('pdf2',compact('suratmasuk'));
+                return $pdf->download('laporan.pdf');
+
                 break;
         }
     }

@@ -58,10 +58,13 @@ Route::middleware('role:admin')->resource('pengguna', App\Http\Controllers\Pengg
 Route::middleware('role:admin|operator')->get('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'index'])->name('laporansuratmasuk');
 Route::middleware('role:admin|operator')->post('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'excel']);
 
-
-
 Route::middleware('role:admin|operator')->get('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'index'])->name('laporansuratkeluar');
 Route::middleware('role:admin|operator')->post('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'excel']);
 
 
-//user
+//templatesurat
+Route::get('/template/tatausaha', [App\Http\Controllers\TemplateSuratController::class, 'tatausaha']);
+Route::get('/template/kesiswaan', [App\Http\Controllers\TemplateSuratController::class, 'kesiswaan']);
+Route::get('/template/kurikulum', [App\Http\Controllers\TemplateSuratController::class, 'kurikulum']);
+Route::get('/template/sarana', [App\Http\Controllers\TemplateSuratController::class, 'sarana']);
+Route::get('/template/humas', [App\Http\Controllers\TemplateSuratController::class, 'humas']);

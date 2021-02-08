@@ -41,12 +41,10 @@
     <div class="container d-flex align-items-center">
 
       <h1 class="logo mr-auto"><a href="/">ARSIP SURAT <span class="nama">SMKN 2 TELUK KUANTAN</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+    
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="#hero">Home</a></li>
           <li><a href="#services">Features</a></li>
           <li><a href="#contact">Contact</a></li>
           @guest
@@ -119,7 +117,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
               <h4 class="title"><a href="">Arsip Surat</a></h4>
-              <p class="description">Database penyimpanan surat masuk & surat keluar</p>
+              <p class="description">Database Penyimpanan Surat Masuk & Surat Keluar</p>
             </div>
           </div>
 
@@ -127,7 +125,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-file"></i></div>
               <h4 class="title"><a href="">Laporan</a></h4>
-              <p class="description">Menampilkan Laporan Data surat masuk dan surat keluar</p>
+              <p class="description">Menampilkan Laporan Data surat Masuk dan Surat Keluar</p>
             </div>
           </div>
 
@@ -135,7 +133,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-tachometer"></i></div>
               <h4 class="title"><a href="">Disposisi</a></h4>
-              <p class="description">Pengiriman surat antar pengguna web</p>
+              <p class="description">Pengiriman Surat Antar Pengguna Web</p>
             </div>
           </div>
 
@@ -143,7 +141,7 @@
             <div class="icon-box">
               <div class="icon"><i class="bx bx-world"></i></div>
               <h4 class="title"><a href="">Template Surat</a></h4>
-              <p class="description">Pembuatan surat secara instan</p>
+              <p class="description">Pembuatan Surat Secara Instan</p>
             </div>
           </div>
 
@@ -180,11 +178,11 @@
         <div class="section-title">
           <h2>Contact</h2>
           <h3>Contact <span>Us</span></h3>
-          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
-        </div>
+          </div>
 
         <div>
-          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+          
+          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.6516248104517!2d101.56051771533721!3d-0.5237506354188135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e2a4dd1f9fd9251%3A0xf7ffe66340829c25!2sSenior%20High%20School!5e0!3m2!1sen!2sid!4v1612777473273!5m2!1sen!2sid" frameborder="0" allowfullscreen></iframe>
         </div>
 
         <div class="row mt-5">
@@ -193,8 +191,8 @@
             <div class="info">
               <div class="address">
                 <i class="icofont-google-map"></i>
-                <h4>Location:</h4>
-                <p>Jln. Ali raja</p>
+                <h4>Alamat:</h4>
+                <p>Jl. Raja Ali Haji (Perumnas), Teluk Kuantan, Koto Taluk, Kuansing, Kabupaten Kuantan Singingi, Riau 2956</p>
               </div>
 
               <div class="email">
@@ -205,7 +203,7 @@
 
               <div class="phone">
                 <i class="icofont-phone"></i>
-                <h4>Call:</h4>
+                <h4>Telepon:</h4>
                 <p>+1 5589 55488 55s</p>
               </div>
 
@@ -230,10 +228,7 @@
 
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
-          &copy; Copyright <strong><span>Tempo</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          &copy; Copyright SMKN 2 Teluk Kuantan 2021. All Rights Reserved
         </div>
       </div>
     </div>

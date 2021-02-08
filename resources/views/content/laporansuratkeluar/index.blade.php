@@ -32,8 +32,8 @@
                 </div>
                 <div class="col-md">
                   <button type="submit" class="btn btn-primary" name="action" value="cari" ><i class="fas fa-search"></i> Sort</button>
-                  <button type="submit" class="btn btn-success" name="action" value="pdf" ><i class="fas fa-file-pdf"></i> Export Pdf</button>
                   <a href="#" onClick ="$('#dataTableHover').tableExport({type:'excel'});" class="btn btn-success"><i class="fas fa-file-csv"></i> Export Excel</a>
+                  <button type="submit" class="btn btn-success" name="action" value="pdf"><i class="fas fa-file-pdf"></i> Export PDF</a>
                 </div>
               </div>
           </tr>
@@ -74,7 +74,7 @@
             </tr>
             @empty
             <tr>
-               <td colspan="8" align="center">Data Tidak Ditemukan</td>
+              <td colspan="8" align="center">Data Tidak Ditemukan</td>
             </tr>
             @endforelse
 

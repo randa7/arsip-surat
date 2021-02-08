@@ -3,14 +3,19 @@
 namespace App\Exports;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\Exportable;
 
-class LaporanExport implements FromCollection
+class UserReport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    use Exportable;
+    
+    public function view($request): View
     {
-        //
+        return view('content.laporansuratkeluar', $request);
     }
 }

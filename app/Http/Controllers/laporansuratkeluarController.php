@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 
 class laporansuratkeluarController extends Controller
@@ -45,7 +46,6 @@ class laporansuratkeluarController extends Controller
 
         switch ($request->input('action')) {
             case 'cari':
-
                 if($request->filled('start') && $request->filled('end')){
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
@@ -79,7 +79,6 @@ class laporansuratkeluarController extends Controller
                 return view('content.laporansuratkeluar.index',compact('suratkeluar','role'));
 
                 break;
-    
             case 'pdf':
                 if($request->filled('start') && $request->filled('end')){
                     $suratkeluar = DB::table('surat_keluar')
@@ -111,10 +110,11 @@ class laporansuratkeluarController extends Controller
                     ->get();
                 }
 
-                return view('content.laporansuratkeluar.pdf',compact('suratkeluar'));
+                $pdf = PDF::loadView('pdf',compact('suratkeluar'));
+                return $pdf->download('laporan.pdf');
 
-                // Preview model
                 break;
         }
     }
+
 }

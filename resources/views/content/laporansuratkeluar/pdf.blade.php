@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="{{asset('assets/img/logo/logo.ico')}}" rel="icon">
-    <link href="{{asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -57,11 +55,6 @@
             @endforelse
         </tbody>
       </table>
-
-
-      <script type="text/javascript">
-		window.print();
-	</script>
 </body>
 
 </html>

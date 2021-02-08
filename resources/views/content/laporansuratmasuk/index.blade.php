@@ -32,6 +32,7 @@
             <div class="col-md">
               <button type="submit" class="btn btn-primary" name="action" value="cari" ><i class="fas fa-search"></i> Sort</button>
               <a href="#" onClick ="$('#dataTableHover').tableExport({type:'excel'});" class="btn btn-success"><i class="fas fa-file-csv"></i> Export Excel</a>
+              <button type="submit" class="btn btn-success" name="action" value="pdf"><i class="fas fa-file-pdf"></i> Export PDF</a>
             </div>
           </div>
       </tr>
