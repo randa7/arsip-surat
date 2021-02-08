@@ -32,7 +32,8 @@
                 </div>
                 <div class="col-md">
                   <button type="submit" class="btn btn-primary" name="action" value="cari" ><i class="fas fa-search"></i> Sort</button>
-                  <button type="submit" class="btn btn-success" name="action" value="export" ><i class="fas fa-file-csv"></i> Export Excel</button>
+                  <button type="submit" class="btn btn-success" name="action" value="pdf" ><i class="fas fa-file-pdf"></i> Export Pdf</button>
+                  <a href="#" onClick ="$('#dataTableHover').tableExport({type:'excel'});" class="btn btn-success"><i class="fas fa-file-csv"></i> Export Excel</a>
                 </div>
               </div>
           </tr>
@@ -90,6 +91,9 @@
   <script src="{{asset('assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
   <script src="{{asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{asset('export/libs/FileSaver/FileSaver.min.js')}}"></script>
+  <script src="{{asset('export/libs/js-xlsx/xlsx.core.min.js')}}"></script>
+  <script src="{{asset('export/tableExport.min.js')}}"></script>
 
   <script>
     $(function () {

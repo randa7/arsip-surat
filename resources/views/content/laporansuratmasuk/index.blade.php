@@ -15,10 +15,9 @@
     <div class="card mb-4">
       <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
         <h3 class="text-center">Data Laporan Surat Masuk</h3>
-        <a href="suratmasuk/create" class="btn btn-success float-right m" title="Export Excel"><i class="fas fa-file-csv"></i> Export Excel</a>
       </div>
 
-      <form role="form" action="/laporansuratmasuk" class="form-horizontal" method="POST">
+      <form role="form" action="" class="form-horizontal" method="POST">
         @csrf
           <div class="form-row">
             <div class="col-md-5 form-group" style="margin-left: 1%">
@@ -32,7 +31,7 @@
             </div>
             <div class="col-md">
               <button type="submit" class="btn btn-primary" name="action" value="cari" ><i class="fas fa-search"></i> Sort</button>
-              <button type="submit" class="btn btn-success" name="action" value="export" ><i class="fas fa-file-csv"></i> Export Excel</button>
+              <a href="#" onClick ="$('#dataTableHover').tableExport({type:'excel'});" class="btn btn-success"><i class="fas fa-file-csv"></i> Export Excel</a>
             </div>
           </div>
       </tr>
@@ -40,7 +39,12 @@
 
       <div class="table-responsive p-3">
         <table class="table align-items-center table-flush table-hover" id="dataTableHover">
+          <caption>
+            
+          </caption>
           <thead class="thead-light">
+            
+
             <tr>
               <th style="width: 5px">No</th>
               <th>No Surat</th>
@@ -55,7 +59,7 @@
           <tbody>
             @forelse($suratmasuk as $key => $surat)
             <tr>
-              <td>{{ $key + 1 }} </td>
+              <td >{{ $key + 1 }} </td>
               <td>{{ $surat->nomor_surat }} </td>
               <td>{{ $surat->perihal }}</td>
               <td>{{ $surat->lampiran }}</td>
@@ -89,12 +93,16 @@
 @push('scripts')
   <script src="{{asset('assets/vendor/datatables/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
+  <script src="{{asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{asset('export/libs/FileSaver/FileSaver.min.js')}}"></script>
+  <script src="{{asset('export/libs/js-xlsx/xlsx.core.min.js')}}"></script>
+  <script src="{{asset('export/tableExport.min.js')}}"></script>
       <!-- Page level custom scripts -->
   <script>
     $(function () {
-
       $(" #dataTableHover").DataTable(); // ID From dataTable with Hover
     });
   </script>
+
 
 @endpush

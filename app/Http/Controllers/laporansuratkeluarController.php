@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+
 class laporansuratkeluarController extends Controller
 {
     public function index()
@@ -79,7 +80,38 @@ class laporansuratkeluarController extends Controller
 
                 break;
     
-            case 'export':
+            case 'pdf':
+                if($request->filled('start') && $request->filled('end')){
+                    $suratkeluar = DB::table('surat_keluar')
+                    ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->whereBetween('tanggalsurat', [$from, $to])
+                    ->get();
+                }
+
+                elseif($request->filled('start') && !$request->filled('end')){
+                    $suratkeluar = DB::table('surat_keluar')
+                    ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->whereBetween('tanggalsurat', [$from, Carbon::now()])
+                    ->get();
+                }
+
+                elseif(!$request->filled('start') && $request->filled('end')){
+                    $suratkeluar = DB::table('surat_keluar')
+                    ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->whereBetween('tanggalsurat', [$begin, $to])
+                    ->get();
+                }
+                else{
+                    $suratkeluar = DB::table('surat_keluar')
+                    ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->get();
+                }
+
+                return view('content.laporansuratkeluar.pdf',compact('suratkeluar'));
 
                 // Preview model
                 break;
