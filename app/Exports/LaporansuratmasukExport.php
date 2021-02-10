@@ -11,6 +11,8 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
 
+use function PHPSTORM_META\map;
+
 class LaporansuratmasukExport implements FromCollection,  WithMapping, WithHeadings, ShouldAutoSize, WithStyles
 {
     private $start;
@@ -77,10 +79,11 @@ class LaporansuratmasukExport implements FromCollection,  WithMapping, WithHeadi
                 'Nomor Surat',
                 'Perihal',
                 'Lampiran',
-                'pengirim',
+                'Pengirim',
                 'Bagian',
                 'Tanggal Surat',
                 'Tanggal Surat Masuk',
+            ],[
             ]
         ];
     }
@@ -93,6 +96,12 @@ class LaporansuratmasukExport implements FromCollection,  WithMapping, WithHeadi
             ]
         ];
 
+        $headStyles = [
+            'font' => [
+                'bold' => true
+            ],
+        ];
+
         $titleStyles = [
             'font' => [
                 'bold' => true
@@ -103,7 +112,7 @@ class LaporansuratmasukExport implements FromCollection,  WithMapping, WithHeadi
             1 => $titleStyles,
             2 => $titleStyles,
             3 => $centerAlignment,
-            5 => $titleStyles,
+            5 => $headStyles,
         ];
     }
 }

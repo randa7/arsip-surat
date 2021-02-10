@@ -31,6 +31,10 @@
     .nama{
       color: coral;
     }
+
+    .men{
+      color: black;
+    }
   </style>
 </head>
 
@@ -61,11 +65,11 @@
           @endif
 
           @else
-
+          <li><a href="{{route('dashboard')}}">Dashboard</a></li>
           <li class="drop-down"><a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
             {{ Auth::user()->name }}</a>
             <ul>
-              <li><a href="{{route('dashboard')}}">Dashboard</a></li>
+              
               <li>                  <a class="" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();">
@@ -115,7 +119,7 @@
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <div class="icon"><i class="ri-inbox-archive-line"></i></div>
               <h4 class="title"><a href="">Arsip Surat</a></h4>
               <p class="description">Database Penyimpanan Surat Masuk & Surat Keluar</p>
             </div>
@@ -131,7 +135,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <div class="icon"><i class="ri-send-plane-fill"></i></div>
               <h4 class="title"><a href="">Disposisi</a></h4>
               <p class="description">Pengiriman Surat Antar Pengguna Web</p>
             </div>
@@ -139,7 +143,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
+              <div class="icon"><i class="icofont-mail"></i></div>
               <h4 class="title"><a href="">Template Surat</a></h4>
               <p class="description">Pembuatan Surat Secara Instan</p>
             </div>

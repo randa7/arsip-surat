@@ -55,13 +55,20 @@
               <td>{{$tgl.'/'.$bln.'/'.$thn }}</td>
 
               <td style="display: flex;">
-                <a href="{{Storage::url($surat->file_surat)}}" target="_blank" class="btn btn-info btn-sm mr-2" title="Download"><i class="fas fa-download"></i></a>
+                @if($surat->file_surat =='')
+                  <a href="javascript:void(0);" data-toggle="modal" data-target="#downloadModal" class="btn btn-info btn-sm mr-2" title="Download"><i class="fas fa-download"></i></a>
+                
+                @else
+                  <a href="{{Storage::url($surat->file_surat)}}" target="_blank" class="btn btn-info btn-sm mr-2" title="Download"><i class="fas fa-download"></i></a>
+                @endif
+                
                 <a href="/suratkeluar/{{$surat->idsuratkeluar}}/detail" class="btn btn-success btn-sm mr-2" title="Detail"><i class="fas fa-eye"></i></a>
                 <a href="/suratkeluar/{{$surat->idsuratkeluar}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Disposisi"><i class="fas fa-paper-plane"></i></a>
                 <a href="/suratkeluar/{{$surat->idsuratkeluar}}/edit" class="btn btn-warning btn-sm mr-2" title="Edit"><i class="fas fa-edit"></i></a>
                 <a href="javascript:void(0);" data-toggle="modal" data-target="#hapusModal" class="btn btn-danger btn-sm mr-2" title="Hapus"><i class="fas fa-trash"></i></a>
              </td>
             </tr>
+            
             <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -86,6 +93,27 @@
               </div>
             </div>
           </div>
+
+            <div class="modal fade" id="downloadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">File Surat</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Tidak Ada File Surat</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Kembali</button></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
             @empty
             <tr>
                <td colspan="8" align="center">Data Tidak Ditemukan</td>

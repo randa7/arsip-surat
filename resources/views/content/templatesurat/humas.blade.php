@@ -21,11 +21,11 @@
                 
                 <tr>
                   <td width="90%">1. Surat Pengantar Siswa PKL </td>
-                  <td><a href="tatausaha/suratrekomendasi" type="button" class="btn btn-primary float-left"> Buat</a> </td>
+                  <td><a href="humas/suratpengantar" type="button" class="btn btn-primary float-left"> Buat</a> </td>
                 </tr>
                 <tr>
                   <td width="90%">2. Surat Penarikan </td>
-                  <td><a href="tatausaha/suratberkelakuanbaik" type="button" class="btn btn-primary float-left"> Buat</a> </td>
+                  <td><a href="humas/suratpenarikan" type="button" class="btn btn-primary float-left"> Buat</a> </td>
                 </tr>
                 </tbody>
             </table>    

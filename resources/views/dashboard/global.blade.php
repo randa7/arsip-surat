@@ -31,7 +31,7 @@
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
             <a class="nav-link" href="/dashboard">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <i class="fas fa-home"></i>
                 <span>Dashboard</span></a>
             </li>
             <hr class="sidebar-divider">
@@ -89,9 +89,9 @@
                     <h6 class="collapse-header">Template Surat</h6>
                     <a class="collapse-item" href="/tatausaha">Tata Usaha</a>
                     <a class="collapse-item" href="/kesiswaan">Kesiswaan</a>
-                    <a class="collapse-item" href="/kurikulum">Kurikulum</a>
                     <a class="collapse-item" href="/sarana">Sarana & Gudang</a>
                     <a class="collapse-item" href="/humas">Hubungan Masyarakat</a>
+                    <a class="collapse-item" href="/kurikulum">Kurikulum</a>
                     </div>
                 </div>
             </li>
@@ -152,7 +152,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Logout !</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>

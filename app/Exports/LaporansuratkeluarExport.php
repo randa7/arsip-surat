@@ -29,8 +29,7 @@ class LaporansuratkeluarExport implements FromCollection,  WithMapping, WithHead
     {
         $suratkeluar = DB::table('surat_keluar')
         ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-        ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
-        ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
+        ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' )
         ->whereBetween('tanggalsurat', [$this->start, $this->end])
         ->get();
 

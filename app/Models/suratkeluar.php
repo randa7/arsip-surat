@@ -20,6 +20,7 @@ class suratkeluar extends Model
         'nomor_surat',
         'perihal',
         'lampiran',
+        'pengirim',
         'kepada',
         'file_surat',
         'tanggalsurat',

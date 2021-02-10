@@ -70,6 +70,15 @@ Route::get('/sarana/kartupermintaan', [App\Http\Controllers\TemplateSuratControl
 Route::post('/sarana/kartupermintaan', [App\Http\Controllers\TemplateSuratController::class, 'kartupermintaan']);
 Route::get('/sarana/kartupeminjaman', [App\Http\Controllers\TemplateSuratController::class, 'peminjaman']);
 Route::post('/sarana/kartupeminjaman', [App\Http\Controllers\TemplateSuratController::class, 'kartupeminjaman']);
+Route::get('/kesiswaan/suratpemanggilan', [App\Http\Controllers\TemplateSuratController::class, 'pemanggilan']);
+Route::post('/kesiswaan/suratpemanggilan', [App\Http\Controllers\TemplateSuratController::class, 'suratpemanggilan']);
+
+Route::get('/humas/suratpengantar', [App\Http\Controllers\TemplateSuratController::class, 'pengantar']);
+Route::post('/humas/suratpengantar', [App\Http\Controllers\TemplateSuratController::class, 'suratpengantar']);
+
+
+Route::get('/humas/suratpenarikan', [App\Http\Controllers\TemplateSuratController::class, 'penarikan']);
+Route::post('/humas/suratpenarikan', [App\Http\Controllers\TemplateSuratController::class, 'suratpenarikan']);
 
 
 

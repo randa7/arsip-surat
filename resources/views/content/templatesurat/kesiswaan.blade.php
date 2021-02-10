@@ -21,11 +21,7 @@
                     
                     <tr>
                       <td width="90%">1. Surat Panggilan Orang Tua </td>
-                      <td><a href="tatausaha/suratrekomendasi" type="button" class="btn btn-primary float-left"> Buat</a> </td>
-                    </tr>
-                    <tr>
-                      <td width="90%">2. Surat Perjanjian Siswa </td>
-                      <td><a href="tatausaha/suratberkelakuanbaik" type="button" class="btn btn-primary float-left"> Buat</a> </td>
+                      <td><a href="kesiswaan/suratpemanggilan" type="button" class="btn btn-primary float-left"> Buat</a> </td>
                     </tr>
                     </tbody>
                 </table>    

@@ -22,6 +22,7 @@ class CreateSuratKeluarTable extends Migration
             $table->string('perihal');
             $table->string('lampiran');
             
+            $table->string('pengirim');
             $table->string('kepada');
             $table->string('file_surat')->nullable();
             $table->date('tanggalsurat');

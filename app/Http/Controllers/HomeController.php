@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bagian;
 use App\Models\suratmasuk;
+use App\Models\suratkeluar;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,6 +32,17 @@ class HomeController extends Controller
     {
 
         $suratmasuk = suratmasuk::count();
+        $suratkeluar = suratkeluar::count();
+        $user = User::count();
+        $bagian = bagian::count();
+
+        $srtmasuk = DB::table('surat_masuk')
+        ->where('iduser', '=' , Auth::id() )
+        ->count();
+
+        $srtkeluar = DB::table('surat_keluar')
+        ->where('iduser', '=' , Auth::id() )
+        ->count();
 
         $role = DB::table('model_has_roles')
         ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
@@ -37,7 +50,7 @@ class HomeController extends Controller
         ->where('model_has_roles.model_id', '=', Auth::id())
         ->first();
 
-        return view('dashboard.dash',compact('role' , 'suratmasuk'));
+        return view('dashboard.dash',compact('role' , 'suratmasuk' ,'suratkeluar' ,'user','bagian' ,'srtmasuk' ,'srtkeluar'));
     }
 
     public function operator()

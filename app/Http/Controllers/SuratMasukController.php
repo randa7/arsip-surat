@@ -269,7 +269,7 @@ class SuratMasukController extends Controller
 
 
         $disposisi = DB::table('disposisi')->insertGetId([
-        
+
             "pengirim" =>Auth::user()->name,
             "penerima" =>$user->name,
         ]);
@@ -296,6 +296,7 @@ class SuratMasukController extends Controller
             "nomor_surat" => $surat->nomor_surat,
             "perihal" => $surat->perihal,
             "lampiran" =>$surat->lampiran,
+            "pengirim" => Auth::user()->name,
             "kepada" => $user->name,
             "file_surat" =>$surat->file_surat,
             "tanggalsurat" => $surat->tanggalsurat,

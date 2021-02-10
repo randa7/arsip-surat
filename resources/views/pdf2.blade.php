@@ -36,11 +36,11 @@
           <th>No</th>
           <th>No Surat</th>
           <th>Perihal</th>
-          <th>Lampiran</th>
+
           <th>Pengirim</th>
           <th>Bagian</th>
           <th>Tanggal Surat</th>
-          <th>Tanggal Surat Keluar</th>
+
         </tr>
       </thead>
       <tbody>
@@ -49,17 +49,14 @@
           <td>{{ $key + 1 }} </td>
           <td>{{ $surat->nomor_surat }} </td>
           <td>{{ $surat->perihal }}</td>
-          <td>{{ $surat->lampiran }}</td>
+
           <td>{{ $surat->pengirim }}</td>
           <td>{{ $surat->bagian }}</td>
           <?php
             list($thn, $bln, $tgl) = explode('-',$surat->tanggalsurat)
           ?>
           <td>{{$tgl.'/'.$bln.'/'.$thn }}</td>
-          <?php
-            list($thn, $bln, $tgl) = explode('-',$surat->tanggalsuratmasuk)
-          ?>
-          <td>{{$tgl.'/'.$bln.'/'.$thn }}</td>
+
 
         </tr>
         @empty

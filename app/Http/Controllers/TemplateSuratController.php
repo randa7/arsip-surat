@@ -163,4 +163,57 @@ class TemplateSuratController extends Controller
         
         return view('content.templatesurat.sarana.kartupeminjaman',compact('jenis' ,'jumlah' , 'merk' ,'peminjaman','pengembalian', 'keterangan','peminjam','date'));
     }
+
+    public function pemanggilan(){
+        $role = DB::table('model_has_roles')
+            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->select('roles.name')
+            ->where('model_has_roles.model_id', '=', Auth::id())
+            ->first();
+
+        return view('content.templatesurat.kesiswaan.pemanggilan',compact('role'));
+    }
+
+    public function suratpemanggilan(Request $request){
+        
+        return view('content.templatesurat.kesiswaan.suratpemanggilan',compact('request'));
+    }
+
+    public function pengantar(){
+        $role = DB::table('model_has_roles')
+            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->select('roles.name')
+            ->where('model_has_roles.model_id', '=', Auth::id())
+            ->first();
+
+        return view('content.templatesurat.humas.pengantar',compact('role'));
+    }
+
+    public function suratpengantar(Request $request){
+
+        $nama = $request["nama_input"];
+        $jurusan = $request["jurusan_input"];
+        $pembimbing = $request["pembimbing_input"];
+
+        return view('content.templatesurat.humas.suratpengantar',compact('request' , 'nama' , 'jurusan' , 'pembimbing'));
+    }
+
+    public function penarikan(){
+        $role = DB::table('model_has_roles')
+            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->select('roles.name')
+            ->where('model_has_roles.model_id', '=', Auth::id())
+            ->first();
+
+        return view('content.templatesurat.humas.penarikan',compact('role'));
+    }
+
+    public function suratpenarikan(Request $request){
+
+        $nama = $request["nama_input"];
+        $jurusan = $request["jurusan_input"];
+        $pembimbing = $request["pembimbing_input"];
+
+        return view('content.templatesurat.humas.suratpenarikan',compact('request' , 'nama' , 'jurusan' , 'pembimbing'));
+    }
 }
