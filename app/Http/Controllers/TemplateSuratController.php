@@ -121,5 +121,15 @@ class TemplateSuratController extends Controller
         return view('content.templatesurat.sarana.permintaan',compact('role'));
     }
 
+    public function kartupermintaan(Request $request){
+
+        $jenis = $request["jenis_input"];
+        $jumlah = $request["jumlah_input"];
+        $merk = $request["merk_input"];
+        $kegunaan = $request["kegunaan_input"];
+        $keterangan = $request["keterangan_input"];
+        return view('content.templatesurat.sarana.kartupermintaan',compact('jenis' ,'jumlah' , 'merk' ,'kegunaan', 'keterangan'));
+    }
+
 
 }

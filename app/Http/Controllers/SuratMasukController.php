@@ -84,7 +84,7 @@ class SuratMasukController extends Controller
         
 
         
-        if($request->filled('file_surat')) {
+        if($request->hasFile('file_surat')) {
             $insertQ = DB::table('surat_masuk')->insert([
                 "iduser" =>Auth::id(),
                 "idbagian" =>$request["idbagian"],
