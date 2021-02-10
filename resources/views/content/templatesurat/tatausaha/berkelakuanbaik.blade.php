@@ -16,7 +16,7 @@
     <div class="container col-md-12">
         <br>
         <h3 class="card-title text-center">Surat Berkelakuan Baik</h3>
-        <form enctype="multipart/form-data" role="form" action="/tatausaha/suratberkelakuanbaik" method="POST" target="blank_">
+        <form enctype="multipart/form-data" role="form" action="/tatausaha/suratberkelakuanbaik" method="POST" target="_blank">
             @csrf
            
             <div class="form-group">

@@ -112,7 +112,7 @@
             </td>
         </tr>
 		<tr>
-			<td colspan="12" align="center"><span class="surat"><u>KARTU PERMINTAAN</span></u></td>
+			<td colspan="12" align="center"><span class="surat"><u>KARTU PEMINJAMAN ALAT/BARANG</span></u></td>
 		</tr>
 		<tr>
 			<td>
@@ -129,18 +129,20 @@
 
         <table class="nilai" style="margin-left: 65px; border-collapse: collapse; margin-right:60px;" border="1px">
             <col style="width:5%; text-align:center;">
-            <col style="width:30%;">
+            <col style="width:25%;">
             <col style="width:8%">
             <col style="width:15%">
+            <col style="width:15%">
+            <col style="width:15%">
             <col style="width:20%">
-            <col style="width:25%">
             <thead>
                <tr>
                   <th style=" font-size:12px;">No.</th>
                   <th style=" font-size:12px;">Nama Alat/Barang</th>
                   <th style="font-size:12px;">Jumlah</th>
                   <th style=" font-size:12px;">Merek/Type</th>
-                  <th style=" font-size:12px;">Kegunaan</th>
+                  <th style=" font-size:12px;">Hari Peminjaman</th>
+                  <th style=" font-size:12px;">Hari Pengembalian</th>
                   <th style=" font-size:12px;">Keterangan</th>
                </tr>
             </thead>
@@ -151,7 +153,104 @@
                         <td>{{$j}}</td>
                         <td class="marks">{{$jumlah[$key]}}</td>
                         <td > {{$merk[$key]}}</td>
-                        <td > {{$kegunaan[$key]}}</td>
+                        @if($peminjaman[$key] == '')
+                            <td> </td>
+                        
+                        @else
+                        <td>
+                            @php
+                            list($thn, $bln, $tgl) = explode('-', $peminjaman[$key]);
+
+                                if($bln == '01'){
+                                    $bln = 'Januari';
+                                }
+                                elseif ($bln == '02') {
+                                    $bln = 'Februari';
+                                }
+                                elseif ($bln == '03') {
+                                    $bln = 'Maret';
+                                }
+                                elseif ($bln == '04') {
+                                    $bln = 'April';
+                                }
+                                elseif ($bln == '05') {
+                                    $bln = 'Mei';
+                                }
+                                elseif ($bln == '06') {
+                                    $bln = 'Juni';
+                                }
+                                elseif ($bln == '07') {
+                                    $bln = 'Juli';
+                                }
+                                elseif ($bln == '08') {
+                                    $bln = 'Agustus';
+                                }
+                                elseif ($bln == '09') {
+                                    $bln = 'September';
+                                }
+                                elseif ($bln == '10') {
+                                    $bln = 'Oktober';
+                                }
+                                elseif ($bln == '11') {
+                                    $bln = 'November';
+                                }
+                                else {
+                                    $bln = 'Desember';
+                                }
+                            @endphp
+                             {{$tgl.' '.$bln.' '.$thn}}
+                            </td>
+                            @endif
+                            
+                            @if($pengembalian[$key] == '')
+                                <td> </td>
+                            
+                            @else
+                            <td>
+                            @php
+
+                            list($thn, $bln, $tgl) = explode('-', $peminjaman[$key]);
+
+                                if($bln == '01'){
+                                    $bln = 'Januari';
+                                }
+                                elseif ($bln == '02') {
+                                    $bln = 'Februari';
+                                }
+                                elseif ($bln == '03') {
+                                    $bln = 'Maret';
+                                }
+                                elseif ($bln == '04') {
+                                    $bln = 'April';
+                                }
+                                elseif ($bln == '05') {
+                                    $bln = 'Mei';
+                                }
+                                elseif ($bln == '06') {
+                                    $bln = 'Juni';
+                                }
+                                elseif ($bln == '07') {
+                                    $bln = 'Juli';
+                                }
+                                elseif ($bln == '08') {
+                                    $bln = 'Agustus';
+                                }
+                                elseif ($bln == '09') {
+                                    $bln = 'September';
+                                }
+                                elseif ($bln == '10') {
+                                    $bln = 'Oktober';
+                                }
+                                elseif ($bln == '11') {
+                                    $bln = 'November';
+                                }
+                                else {
+                                    $bln = 'Desember';
+                                }
+                            @endphp
+                             {{$tgl.' '.$bln.' '.$thn}}
+                        </td>
+                        @endif
                         <td > {{$keterangan[$key]}}</td>
                     </tr>
                  @endforeach
@@ -237,7 +336,7 @@ list($thn, $bln, $tgl) = explode('-', $date);
                 <br>
                 <br>
                 <br>
-            ( {{$peminta}} )
+            ( {{$peminjam}} )
             <br>
             </p>
         </td>

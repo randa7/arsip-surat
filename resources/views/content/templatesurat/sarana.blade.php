@@ -25,7 +25,7 @@
                       <td><a href="sarana/kartupermintaan" type="button" class="btn btn-primary float-left"> Buat</a> </td>
                     </tr>
                     <tr>
-                      <td width="90%">2. Kartu Peminjaman </td>
+                      <td width="90%">2. Kartu Peminjaman Alat dan Barang </td>
                       <td><a href="sarana/kartupeminjaman" type="button" class="btn btn-primary float-left"> Buat</a> </td>
                     </tr>
 

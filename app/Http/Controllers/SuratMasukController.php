@@ -166,19 +166,6 @@ class SuratMasukController extends Controller
      */
     public function update(ErrorUpdateMasukRequest $request, $id)
     {
-        $request->validate([
-            "idbagian" =>'required',
-            "nomor_surat" => 'required',
-            "perihal" => 'required',
-            "lampiran" =>'required',
-            "pengirim" => 'required',
-            "file_surat" =>['nullable', 'mimetypes:image/*,application/pdf'],
-            "tanggalsurat" => 'required',
-            "tanggalsuratmasuk" => 'required',
-            
-        ]);
-
-      
         
 
         if($request->hasFile('file_surat')){

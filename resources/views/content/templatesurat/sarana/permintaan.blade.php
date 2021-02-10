@@ -7,7 +7,7 @@
     <h1 class="h3 mb-0 text-gray-800">Buat Kartu Permintaan</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="/saran">Template Surat Sarana & Gudang </a></li>
+        <li class="breadcrumb-item" aria-current="page"><a href="/sarana">Template Surat Sarana & Gudang </a></li>
         <li class="breadcrumb-item active" aria-current="page">Kartu Permintaan</li>
     </ol>
     </div>
@@ -16,10 +16,10 @@
   <div class="card mb-4">
     <div class="container col-md-12">
       <br>
-      <h3 class="card-title text-center">Kartu Permintaan</h3>
+      <h3 class="card-title text-center">Kartu Permintaan Barang</h3>
               <!-- membuat form  -->
               <!-- gunakan tanda [] untuk menampung array  -->
-              <form enctype="multipart/form-data" role="form" action="/sarana/kartupermintaan" method="POST" target="blank_">
+              <form enctype="multipart/form-data" role="form" action="/sarana/kartupermintaan" method="POST" target="_blank">
                 @csrf
                 <div class="table-responsive p-3">
                   <table class="table align-items-center table-flush table-hover">
@@ -30,6 +30,7 @@
                               <th width="10px">Merk</th>
                               <th width="10px">Kegunaan</th>
                               <th width="10px">Keterangan</th>
+                              <th width="10px">Peminta</th>
                               <th width="8px"></th>
                           </tr>
                       </thead>
@@ -41,6 +42,8 @@
                               <td><input name="merk_input[0]" class="form-control" /></td>
                               <td><input name="kegunaan_input[0]" class="form-control" /></td>
                               <td><input name="keterangan_input[0]" class="form-control" /></td>
+                              <td><input name="peminta" class="form-control" required/>
+                              </td>
                               <td></td>
                           </tr>
                       </tbody>
@@ -51,13 +54,15 @@
                               <td></td>
                               <td></td>
                               <td></td>
+                              <td></td>
                               <td>
-                                  <button class="btn btn-small btn-primary" onclick="additem(); return false">Tambahkan</button>
+                                  <button class="btn btn-small btn-primary" onclick="additem(); return false"><i class="fas fa-plus-circle"></i></button>
                               </td>
                           </tr>
                       </tfoot>
                   </table>
-                <button class="btn btn-success" type="submit">Submit</button>
+                <button class="btn btn-success" type="submit">Buat</button>
+                <a href="/sarana" type="button" class="btn btn-secondary">Kembali</a>
                 </div>
                 <br><br>
               </form>

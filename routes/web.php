@@ -68,6 +68,8 @@ Route::get('/tatausaha/suratberkelakuanbaik', [App\Http\Controllers\TemplateSura
 Route::post('/tatausaha/suratberkelakuanbaik', [App\Http\Controllers\TemplateSuratController::class, 'buatberkelakuanbaik']);
 Route::get('/sarana/kartupermintaan', [App\Http\Controllers\TemplateSuratController::class, 'permintaan']);
 Route::post('/sarana/kartupermintaan', [App\Http\Controllers\TemplateSuratController::class, 'kartupermintaan']);
+Route::get('/sarana/kartupeminjaman', [App\Http\Controllers\TemplateSuratController::class, 'peminjaman']);
+Route::post('/sarana/kartupeminjaman', [App\Http\Controllers\TemplateSuratController::class, 'kartupeminjaman']);
 
 
 
