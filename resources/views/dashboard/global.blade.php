@@ -15,6 +15,7 @@
     <link href="{{asset('assets/css/ruang-admin.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+
 </head>
 
     <body id="page-top">
@@ -86,11 +87,11 @@
                 <div id="collapsePage" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Template Surat</h6>
-                    <a class="collapse-item" href="/template/tatausaha">Tata Usaha</a>
-                    <a class="collapse-item" href="/template/kesiswaan">Kesiswaan</a>
-                    <a class="collapse-item" href="/template/kurikulum">Kurikulum</a>
-                    <a class="collapse-item" href="/template/sarana">Sarana & Gudang</a>
-                    <a class="collapse-item" href="/template/humas">Hubungan Masyarakat</a>
+                    <a class="collapse-item" href="/tatausaha">Tata Usaha</a>
+                    <a class="collapse-item" href="/kesiswaan">Kesiswaan</a>
+                    <a class="collapse-item" href="/kurikulum">Kurikulum</a>
+                    <a class="collapse-item" href="/sarana">Sarana & Gudang</a>
+                    <a class="collapse-item" href="/humas">Hubungan Masyarakat</a>
                     </div>
                 </div>
             </li>

@@ -10,7 +10,26 @@
     </ol>
     </div>
 
-
+    <div class="container rounded bg-white">
+        <div class="col-md-12">
+            <div class="p-3 py-5 mb-4">
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h3 class="text-center">Template Surat Kurikulum</h3>
+              </div>
+              <div class="table-responsive p-3 ">
+                <table class="table table-borderless align-items-center table-flush table-hover">
+                  <tbody>
+                    
+                    <tr>
+                      <td width="90%">1. Surat Rekomendasi </td>
+                      <td><a href="#" type="button" class="btn btn-primary float-left"> Buat</a> </td>
+                    </tr>
+                    </tbody>
+                </table>    
+            </div>
+            </div>
+        </div>
+    </div>
 
 
 

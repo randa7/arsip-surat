@@ -10,7 +10,8 @@ use Carbon\Carbon;
 use App\Models\suratmasuk;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use App\Http\Requests\ErrorFormRequest;
+use App\Http\Requests\ErrorUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 
 class SuratKeluarController extends Controller
@@ -63,19 +64,8 @@ class SuratKeluarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ErrorFormRequest $request)
     {
-        $request->validate([
-            "idbagian" =>'required',
-            "nomor_surat" => 'required|unique:surat_keluar',
-            "perihal" => 'required',
-            "lampiran" =>'required',
-            "kepada" => 'required',
-            "file_surat" =>['nullable', 'mimetypes:image/*,application/pdf'],
-            "tanggalsurat" => 'required',
-            "tanggalsuratkeluar" => 'nullable',
-            
-        ]);
 
         $date = Carbon::now()->toDateString();
         
@@ -162,23 +152,14 @@ class SuratKeluarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ErrorUpdateRequest $request, $id)
     {
-        $request->validate([
-            "idbagian" =>'required',
-            "nomor_surat" => 'required',
-            "perihal" => 'required',
-            "lampiran" =>'required',
-            "kepada" => 'required',
-            "file_surat" =>['nullable', 'mimetypes:image/*,application/pdf'],
-            "tanggalsurat" => 'required',
-            "tanggalsuratkeluar" => 'required',
-        ]);
+
 
       
         
 
-        if($request->filled('file_surat')){
+        if($request->hasFile('file_surat')){
 
             
             $updateQ = DB::table('surat_keluar')
@@ -317,6 +298,8 @@ class SuratKeluarController extends Controller
 
         return redirect('/suratkeluar')->with('toast_success','Surat Berhasil didisposisikan');
 
-    }    
+    }   
+
+
 
 }

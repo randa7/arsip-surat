@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ErrorFormMasukRequest;
+use App\Http\Requests\ErrorUpdateMasukRequest;
 use App\Models\suratkeluar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -63,7 +65,7 @@ class SuratMasukController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ErrorFormMasukRequest $request)
     {
         $request->validate([
             "idbagian" =>'required',
@@ -162,7 +164,7 @@ class SuratMasukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ErrorUpdateMasukRequest $request, $id)
     {
         $request->validate([
             "idbagian" =>'required',
@@ -179,7 +181,7 @@ class SuratMasukController extends Controller
       
         
 
-        if($request->filled('file_surat')){
+        if($request->hasFile('file_surat')){
 
             $updateQ = DB::table('surat_masuk')
                 ->where('idsuratmasuk',$id)

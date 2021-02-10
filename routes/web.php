@@ -49,22 +49,30 @@ Route::get('/suratkeluar/{suratkeluar}/detail', [App\Http\Controllers\SuratKelua
 Route::get('/suratkeluar/{suratkeluar}/disposisi', [App\Http\Controllers\SuratKeluarController::class, 'disposisi']);
 Route::put('/suratkeluar/disposisi/{idsurat}', [App\Http\Controllers\SuratKeluarController::class, 'kirim']);
 
-//admin
+//pengguna
 Route::middleware('role:admin')->resource('pengguna', App\Http\Controllers\PenggunaController::class);
 
 
 //laporan
-
 Route::middleware('role:admin|operator')->get('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'index'])->name('laporansuratmasuk');
 Route::middleware('role:admin|operator')->post('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'excel']);
-
 Route::middleware('role:admin|operator')->get('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'index'])->name('laporansuratkeluar');
 Route::middleware('role:admin|operator')->post('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'excel']);
 
 
 //templatesurat
-Route::get('/template/tatausaha', [App\Http\Controllers\TemplateSuratController::class, 'tatausaha']);
-Route::get('/template/kesiswaan', [App\Http\Controllers\TemplateSuratController::class, 'kesiswaan']);
-Route::get('/template/kurikulum', [App\Http\Controllers\TemplateSuratController::class, 'kurikulum']);
-Route::get('/template/sarana', [App\Http\Controllers\TemplateSuratController::class, 'sarana']);
-Route::get('/template/humas', [App\Http\Controllers\TemplateSuratController::class, 'humas']);
+Route::get('/tatausaha', [App\Http\Controllers\TemplateSuratController::class, 'tatausaha']);
+Route::get('/tatausaha/suratrekomendasi', [App\Http\Controllers\TemplateSuratController::class, 'rekomendasi']);
+Route::post('/tatausaha/suratrekomendasi', [App\Http\Controllers\TemplateSuratController::class, 'buatrekomendasi']);
+Route::get('/tatausaha/suratberkelakuanbaik', [App\Http\Controllers\TemplateSuratController::class, 'berkelakuanbaik']);
+Route::post('/tatausaha/suratberkelakuanbaik', [App\Http\Controllers\TemplateSuratController::class, 'buatberkelakuanbaik']);
+Route::get('/sarana/kartupermintaan', [App\Http\Controllers\TemplateSuratController::class, 'permintaan']);
+
+
+
+
+Route::get('/kesiswaan', [App\Http\Controllers\TemplateSuratController::class, 'kesiswaan']);
+Route::get('/kurikulum', [App\Http\Controllers\TemplateSuratController::class, 'kurikulum']);
+Route::get('/sarana', [App\Http\Controllers\TemplateSuratController::class, 'sarana']);
+Route::get('/humas', [App\Http\Controllers\TemplateSuratController::class, 'humas']);
+

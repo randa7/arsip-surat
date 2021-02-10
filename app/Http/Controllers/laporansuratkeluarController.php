@@ -19,7 +19,8 @@ class laporansuratkeluarController extends Controller
             
         $suratkeluar = DB::table('surat_keluar')
             ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-            ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+            ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
+            ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
             ->get();
 
         $role = DB::table('model_has_roles')
@@ -51,7 +52,8 @@ class laporansuratkeluarController extends Controller
                 if($request->filled('start') && $request->filled('end')){
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
                     ->whereBetween('tanggalsurat', [$from, $to])
                     ->get();
                 }
@@ -59,7 +61,8 @@ class laporansuratkeluarController extends Controller
                 elseif($request->filled('start') && !$request->filled('end')){
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
                     ->whereBetween('tanggalsurat', [$from, Carbon::now()])
                     ->get();
                 }
@@ -67,14 +70,16 @@ class laporansuratkeluarController extends Controller
                 elseif(!$request->filled('start') && $request->filled('end')){
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
                     ->whereBetween('tanggalsurat', [$begin, $to])
                     ->get();
                 }
                 else{
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
                     ->get();
                 }
 
@@ -85,7 +90,8 @@ class laporansuratkeluarController extends Controller
                 if($request->filled('start') && $request->filled('end')){
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
                     ->whereBetween('tanggalsurat', [$from, $to])
                     ->get();
                 }
@@ -93,7 +99,8 @@ class laporansuratkeluarController extends Controller
                 elseif($request->filled('start') && !$request->filled('end')){
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
                     ->whereBetween('tanggalsurat', [$from, Carbon::now()])
                     ->get();
                 }
@@ -101,14 +108,16 @@ class laporansuratkeluarController extends Controller
                 elseif(!$request->filled('start') && $request->filled('end')){
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
                     ->whereBetween('tanggalsurat', [$begin, $to])
                     ->get();
                 }
                 else{
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
-                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->join('disposisi', 'surat_keluar.iddisposisi', '=', 'disposisi.id')
+                    ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' , 'disposisi.pengirim as pengirim')
                     ->get();
                 }
 

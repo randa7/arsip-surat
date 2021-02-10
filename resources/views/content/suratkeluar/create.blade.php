@@ -88,7 +88,7 @@
                     <input type="file" class="form-control-file" name="file_surat" id="file_surat" value="{{ old ('file_surat','')}}" accept="image/*,application/pdf">
                 </div>
                 @error('file_surat')
-                <div class="alert alert-danger">File harus bertype pdf atau img</div>
+                <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
 

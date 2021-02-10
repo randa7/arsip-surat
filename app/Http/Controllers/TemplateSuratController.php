@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use PDF;
 
 class TemplateSuratController extends Controller
 {
@@ -56,4 +57,69 @@ class TemplateSuratController extends Controller
 
         return view('content.templatesurat.humas',compact('role'));
     }
+
+    public function rekomendasi(){
+        $role = DB::table('model_has_roles')
+            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->select('roles.name')
+            ->where('model_has_roles.model_id', '=', Auth::id())
+            ->first();
+
+        return view('content.templatesurat.tatausaha.rekomendasi',compact('role'));
+    }
+
+    public function buatrekomendasi(Request $request){
+
+        $request->validate([
+            "nomor_surat" => 'required',
+            "isi" => 'required',
+            "nama" => 'required',
+            "ttl" =>'required',
+            "jurusan" => 'required',
+            "tamatan" => 'required',
+            "tanggalsurat" => 'required',
+        ]);
+        
+        return view('content.templatesurat.tatausaha.suratrekomendasi',compact('request'));
+        
+    }
+
+    public function berkelakuanbaik(){
+        $role = DB::table('model_has_roles')
+            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->select('roles.name')
+            ->where('model_has_roles.model_id', '=', Auth::id())
+            ->first();
+
+        return view('content.templatesurat.tatausaha.berkelakuanbaik',compact('role'));
+    }
+
+    public function buatberkelakuanbaik(Request $request){
+
+        $request->validate([
+            "nomor_surat" => 'required',
+            "nama" => 'required',
+            "ttl" =>'required',
+            "nisn" =>'required',
+            "jurusan" =>'required',
+            "alamat" => 'required',
+            "tahunajaran" => 'required',
+            "tanggalsurat" => 'required',
+        ]);
+        
+        return view('content.templatesurat.tatausaha.suratberkelakuanbaik',compact('request'));
+        
+    }
+
+    public function permintaan(){
+        $role = DB::table('model_has_roles')
+            ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+            ->select('roles.name')
+            ->where('model_has_roles.model_id', '=', Auth::id())
+            ->first();
+
+        return view('content.templatesurat.sarana.permintaan',compact('role'));
+    }
+
+
 }

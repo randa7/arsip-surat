@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\suratmasuk;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,13 +28,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        $suratmasuk = suratmasuk::count();
+
         $role = DB::table('model_has_roles')
         ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
         ->select('roles.name')
         ->where('model_has_roles.model_id', '=', Auth::id())
         ->first();
 
-        return view('dashboard.dash',compact('role'));
+        return view('dashboard.dash',compact('role' , 'suratmasuk'));
     }
 
     public function operator()

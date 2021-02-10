@@ -92,7 +92,7 @@
                     <label for="file_surat">File Surat</label>
                     <input type="file" class="form-control-file" name="file_surat" id="file_surat" value="{{ old ('file_surat','')}}" accept="image/*,application/pdf">
                     @error('file_surat')
-                    <div class="alert alert-danger">File surat harus bertype pdf atau img</div>
+                    <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
             </div>
