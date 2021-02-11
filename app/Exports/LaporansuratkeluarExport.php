@@ -82,7 +82,7 @@ class LaporansuratkeluarExport implements FromCollection,  WithMapping, WithHead
                 'Kepada',
                 'Bagian',
                 'Tanggal Surat',
-                'Tanggal Surat Masuk',
+                'Tanggal Surat Keluar',
             ]
         ];
     }

@@ -66,9 +66,6 @@
 
           @else
           <li><a href="{{route('dashboard')}}">Dashboard</a></li>
-          <li class="drop-down"><a href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ Auth::user()->name }}</a>
-            <ul>
               
               <li>                  <a class="" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
@@ -79,8 +76,8 @@
                 @csrf
             </form>
             </li>
-            </ul>
-          </li>
+      
+          
 
 
 
