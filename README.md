@@ -3,7 +3,7 @@
  Link : https://getcomposer.org/download/2.0.9/composer.phar
 2. Clone Repository
  command line : git clone https://github.com/randa7/arsip-surat.git
-3. Masuk ke dirictory file
+3. Masuk ke directory file
  command line : cd arsip-surat.git
 4. Install Depedency
  command line : composer install
