@@ -91,7 +91,7 @@
                     <a class="collapse-item" href="/kesiswaan">Kesiswaan</a>
                     <a class="collapse-item" href="/sarana">Sarana & Gudang</a>
                     <a class="collapse-item" href="/humas">Hubungan Masyarakat</a>
-                    <a class="collapse-item" href="/kurikulum">Kurikulum</a>
+                    {{-- <a class="collapse-item" href="/kurikulum">Kurikulum</a> --}}
                     </div>
                 </div>
             </li>
