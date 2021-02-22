@@ -142,7 +142,7 @@
             <div class="icon-box">
               <div class="icon"><i class="icofont-mail"></i></div>
               <h4 class="title"><a href="">Template Surat</a></h4>
-              <p class="description">Pembuatan Surat Secara Instan</p>
+              <p class="description">Buat Surat anti ribet hanya perlu mengisi form keterangan</p>
             </div>
           </div>
 

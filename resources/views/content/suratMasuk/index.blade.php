@@ -114,7 +114,7 @@
 
             @empty
             <tr>
-               <td colspan="8" align="center">Data Tidak Ditemukan</td>
+               <td colspan="12" align="center">Data Tidak Ditemukan</td>
             </tr>
             @endforelse
 

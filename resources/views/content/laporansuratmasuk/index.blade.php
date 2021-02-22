@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="col-md">
-              <button type="submit" class="btn btn-primary" name="action" value="cari" ><i class="fas fa-search"></i> Sort</button>
+              <button type="submit" class="btn btn-primary" name="action" value="cari" ><i class="fas fa-search"></i> Cari</button>
               <button type="submit" class="btn btn-success" name="action" value="csv"><i class="fas fa-file-csv"></i> Export Excel</button>
               <button type="submit" class="btn btn-success" name="action" value="pdf"><i class="fas fa-file-pdf"></i> Export PDF</button>
             </div>
@@ -78,7 +78,7 @@
             </tr>
             @empty
             <tr>
-               <td colspan="8" align="center">Data Tidak Ditemukan</td>
+               <td colspan="12" align="center">Data Tidak Ditemukan</td>
             </tr>
             @endforelse
 
