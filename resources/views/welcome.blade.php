@@ -58,11 +58,11 @@
               </li>
           @endif
 
-          @if (Route::has('register'))
+          {{-- @if (Route::has('register'))
               <li>
                   <a href="{{ route('register') }}">{{ __('Register') }}</a>
               </li>
-          @endif
+          @endif --}}
 
           @else
           <li><a href="{{route('dashboard')}}">Dashboard</a></li>
@@ -93,10 +93,20 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
-      <h3><strong>Selamat Datang di Arsip Surat SMKN 2 Teluk Kuantan</strong></h3>
-      <h1>Database Penyimpanan Surat</h1>
-      {{-- <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a> --}}
+
+      <h1>Welcome</h1> 
+      <h2>Website Pengelolaan Arsip Surat</h2>
+      @guest
+      @if (Route::has('login'))
+              <a  href="{{ route('login') }}" class="btn-get-started scrollto">Arsipkan</a>
+      @endif
+      @else
+      <a href="{{route('dashboard')}}" class="btn-get-started scrollto">Arsipkan</a>
+
+  
+      @endguest
+
+
     </div>
   </section><!-- End Hero -->
 
