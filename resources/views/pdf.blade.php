@@ -36,7 +36,7 @@
           <th>No</th>
           <th>No Surat</th>
           <th>Perihal</th>
-          <th>Pengirim</th>
+     
           <th>Kepada</th>
           <th>Bagian</th>
           <th>Tanggal Surat</th>
@@ -48,7 +48,7 @@
           <td>{{ $key + 1 }} </td>
           <td>{{ $surat->nomor_surat }} </td>
           <td>{{ $surat->perihal }}</td>
-          <td>{{ $surat->pengirim }}</td>
+  
           <td>{{ $surat->kepada }}</td>
           <td>{{ $surat->bagian }}</td>
           <?php

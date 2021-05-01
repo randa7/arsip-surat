@@ -49,10 +49,10 @@
 
                     </form>
                     <hr>
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                       <a class="font-weight-bold small" href="/register">Create an Account!</a>
                     </div>
-                    <div class="text-center">
+                    <div class="text-center"> --}}
                     </div>
                   </div>
                 </div>

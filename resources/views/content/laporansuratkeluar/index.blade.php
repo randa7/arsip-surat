@@ -47,7 +47,7 @@
               <th>No Surat</th>
               <th>Perihal</th>
               <th>Lampiran</th>
-              <th>Pengirim</th>
+              {{-- <th>Pengirim</th> --}}
               <th>Kepada</th>
               <th>Bagian</th>
               <th>Tanggal Surat</th>
@@ -61,7 +61,7 @@
               <td>{{ $surat->nomor_surat }} </td>
               <td>{{ $surat->perihal }}</td>
               <td>{{ $surat->lampiran }}</td>
-              <td>{{ $surat->pengirim }}</td>
+              {{-- <td>{{ $surat->pengirim }}</td> --}}
               <td>{{ $surat->kepada }}</td>
               <td>{{ $surat->bagian }}</td>
               <?php

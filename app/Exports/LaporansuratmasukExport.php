@@ -5,6 +5,7 @@ namespace App\Exports;
 use App\Models\suratmasuk;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -32,6 +33,7 @@ class LaporansuratmasukExport implements FromCollection,  WithMapping, WithHeadi
         $suratmasuk = DB::table('surat_masuk')
         ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
         ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+        ->where('surat_masuk.iduser', '=', Auth::id())
         ->whereBetween('tanggalsurat', [$this->start, $this->end])
         ->get();
 

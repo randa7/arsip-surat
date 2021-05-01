@@ -283,28 +283,28 @@ class SuratMasukController extends Controller
             "nomor_surat" => $surat->nomor_surat,
             "perihal" => $surat->perihal,
             "lampiran" =>$surat->lampiran,
-            "pengirim" => Auth::user()->name,
+            "pengirim" => $surat->pengirim,
             "file_surat" =>$surat->file_surat,
             "tanggalsurat" => $surat->tanggalsurat,
             "tanggalsuratmasuk" => $date,
         ]);
 
-        $suratkeluarbaru = suratkeluar::create([
-            "iduser" => Auth::id(),
-            "idbagian" =>$surat->idbagian,
-            "iddisposisi" =>$disposisi,
-            "nomor_surat" => $surat->nomor_surat,
-            "perihal" => $surat->perihal,
-            "lampiran" =>$surat->lampiran,
-            "pengirim" => Auth::user()->name,
-            "kepada" => $user->name,
-            "file_surat" =>$surat->file_surat,
-            "tanggalsurat" => $surat->tanggalsurat,
-            "tanggalsuratkeluar" => $date,
-        ]);
+        // $suratkeluarbaru = suratkeluar::create([
+        //     "iduser" => Auth::id(),
+        //     "idbagian" =>$surat->idbagian,
+        //     "iddisposisi" =>$disposisi,
+        //     "nomor_surat" => $surat->nomor_surat,
+        //     "perihal" => $surat->perihal,
+        //     "lampiran" =>$surat->lampiran,
+        //     "pengirim" => Auth::user()->name,
+        //     "kepada" => $user->name,
+        //     "file_surat" =>$surat->file_surat,
+        //     "tanggalsurat" => $surat->tanggalsurat,
+        //     "tanggalsuratkeluar" => $date,
+        // ]);
 
 
-        return redirect('/suratkeluar')->with('toast_success','Surat Berhasil didisposisi');
+        return redirect('/suratmasuk')->with('toast_success','Surat Berhasil didisposisi');
 
     }
 

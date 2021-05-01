@@ -20,6 +20,7 @@ class laporansuratkeluarController extends Controller
         $suratkeluar = DB::table('surat_keluar')
             ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
             ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+            ->where('surat_keluar.iduser', '=', Auth::id())
             ->get();
 
         $role = DB::table('model_has_roles')
@@ -52,6 +53,7 @@ class laporansuratkeluarController extends Controller
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
                     ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' )
+                    ->where('surat_keluar.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$from, $to])
                     ->get();
                 }
@@ -60,6 +62,7 @@ class laporansuratkeluarController extends Controller
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
                     ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_keluar.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$from, Carbon::now()])
                     ->get();
                 }
@@ -67,6 +70,7 @@ class laporansuratkeluarController extends Controller
                 elseif(!$request->filled('start') && $request->filled('end')){
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
+                    ->where('surat_keluar.iduser', '=', Auth::id())
                     ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
                     ->whereBetween('tanggalsurat', [$begin, $to])
                     ->get();
@@ -75,6 +79,7 @@ class laporansuratkeluarController extends Controller
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
                     ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_keluar.iduser', '=', Auth::id())
                     ->get();
                 }
 
@@ -86,6 +91,7 @@ class laporansuratkeluarController extends Controller
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
                     ->select('surat_keluar.*', 'bagian.nama_bagian as bagian' )
+                    ->where('surat_keluar.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$from, $to])
                     ->get();
                 }
@@ -94,6 +100,7 @@ class laporansuratkeluarController extends Controller
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
                     ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_keluar.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$from, Carbon::now()])
                     ->get();
                 }
@@ -102,6 +109,7 @@ class laporansuratkeluarController extends Controller
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
                     ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_keluar.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$begin, $to])
                     ->get();
                 }
@@ -109,6 +117,7 @@ class laporansuratkeluarController extends Controller
                     $suratkeluar = DB::table('surat_keluar')
                     ->join('bagian', 'surat_keluar.idbagian', '=', 'bagian.id')
                     ->select('surat_keluar.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_keluar.iduser', '=', Auth::id())
                     ->get();
                 }
 

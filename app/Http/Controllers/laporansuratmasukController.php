@@ -19,6 +19,7 @@ class laporansuratmasukController extends Controller
         $suratmasuk = DB::table('surat_masuk')
             ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
             ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+            ->where('surat_masuk.iduser', '=', Auth::id())
             ->get();
 
         $role = DB::table('model_has_roles')
@@ -52,6 +53,7 @@ class laporansuratmasukController extends Controller
                     $suratmasuk = DB::table('surat_masuk')
                     ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
                     ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_masuk.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$from, $to])
                     ->get();
                 }
@@ -60,6 +62,7 @@ class laporansuratmasukController extends Controller
                     $suratmasuk = DB::table('surat_masuk')
                     ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
                     ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_masuk.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$from, Carbon::now()])
                     ->get();
                 }
@@ -68,6 +71,7 @@ class laporansuratmasukController extends Controller
                     $suratmasuk = DB::table('surat_masuk')
                     ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
                     ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_masuk.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$begin, $to])
                     ->get();
                 }
@@ -75,6 +79,7 @@ class laporansuratmasukController extends Controller
                     $suratmasuk = DB::table('surat_masuk')
                     ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
                     ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_masuk.iduser', '=', Auth::id())
                     ->get();
                 }
 
@@ -89,6 +94,7 @@ class laporansuratmasukController extends Controller
                     $suratmasuk = DB::table('surat_masuk')
                     ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
                     ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_masuk.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$from, $to])
                     ->get();
                 }
@@ -97,6 +103,7 @@ class laporansuratmasukController extends Controller
                     $suratmasuk = DB::table('surat_masuk')
                     ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
                     ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_masuk.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$from, Carbon::now()])
                     ->get();
                 }
@@ -105,6 +112,7 @@ class laporansuratmasukController extends Controller
                     $suratmasuk = DB::table('surat_masuk')
                     ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
                     ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_masuk.iduser', '=', Auth::id())
                     ->whereBetween('tanggalsurat', [$begin, $to])
                     ->get();
                 }
@@ -112,6 +120,7 @@ class laporansuratmasukController extends Controller
                     $suratmasuk = DB::table('surat_masuk')
                     ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
                     ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
+                    ->where('surat_masuk.iduser', '=', Auth::id())
                     ->get();
                 }
 
