@@ -33,7 +33,7 @@ Route::middleware('role:admin|operator')->get('/suratmasuk/create', [App\Http\Co
 Route::middleware('role:admin|operator')->post('/suratmasuk', [App\Http\Controllers\SuratMasukController::class, 'store']);
 Route::delete('/suratmasuk/{idsuratmasuk}', [App\Http\Controllers\SuratMasukController::class, 'destroy']);
 Route::put('/suratmasuk/{idsurat}', [App\Http\Controllers\SuratMasukController::class, 'update']);
-Route::get('/suratmasuk/{suratmasuk}/edit', [App\Http\Controllers\SuratMasukController::class, 'edit']);
+Route::middleware('role:admin|operator')->get('/suratmasuk/{suratmasuk}/edit', [App\Http\Controllers\SuratMasukController::class, 'edit']);
 Route::get('/suratmasuk/{suratmasuk}/detail', [App\Http\Controllers\SuratMasukController::class, 'detail']);
 Route::get('/suratmasuk/{suratmasuk}/disposisi', [App\Http\Controllers\SuratMasukController::class, 'disposisi']);
 Route::put('/suratmasuk/disposisi/{idsurat}', [App\Http\Controllers\SuratMasukController::class, 'kirim']);
@@ -44,7 +44,7 @@ Route::middleware('role:admin|operator')->get('/suratkeluar/create', [App\Http\C
 Route::middleware('role:admin|operator')->post('/suratkeluar', [App\Http\Controllers\SuratKeluarController::class, 'store']);
 Route::delete('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'destroy']);
 Route::put('/suratkeluar/{idsurat}', [App\Http\Controllers\SuratKeluarController::class, 'update']);
-Route::get('/suratkeluar/{suratkeluar}/edit', [App\Http\Controllers\SuratKeluarController::class, 'edit']);
+Route::middleware('role:admin|operator')->get('/suratkeluar/{suratkeluar}/edit', [App\Http\Controllers\SuratKeluarController::class, 'edit']);
 Route::get('/suratkeluar/{suratkeluar}/detail', [App\Http\Controllers\SuratKeluarController::class, 'detail']);
 Route::get('/suratkeluar/{suratkeluar}/disposisi', [App\Http\Controllers\SuratKeluarController::class, 'disposisi']);
 Route::put('/suratkeluar/disposisi/{idsurat}', [App\Http\Controllers\SuratKeluarController::class, 'kirim']);

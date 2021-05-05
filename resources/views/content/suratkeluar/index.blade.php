@@ -64,8 +64,13 @@
                 
                 <a href="/suratkeluar/{{$surat->idsuratkeluar}}/detail" class="btn btn-success btn-sm mr-2" title="Detail"><i class="fas fa-eye"></i></a>
                 <a href="/suratkeluar/{{$surat->idsuratkeluar}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Disposisi"><i class="fas fa-paper-plane"></i></a>
-                <a href="/suratkeluar/{{$surat->idsuratkeluar}}/edit" class="btn btn-warning btn-sm mr-2" title="Edit"><i class="fas fa-edit"></i></a>
-                <a href="javascript:void(0);" data-toggle="modal" data-target="#hapusModal" class="btn btn-danger btn-sm mr-2" title="Hapus"><i class="fas fa-trash"></i></a>
+                @if ($role->name == 'user')
+                {{-- <li></li> --}}
+                @else
+                  <a href="/suratkeluar/{{$surat->idsuratkeluar}}/edit" class="btn btn-warning btn-sm mr-2" title="Edit"><i class="fas fa-edit"></i></a>
+                  <a href="javascript:void(0);" data-toggle="modal" data-target="#hapusModal" class="btn btn-danger btn-sm mr-2" title="Hapus"><i class="fas fa-trash"></i></a>
+                @endif
+
              </td>
             </tr>
             

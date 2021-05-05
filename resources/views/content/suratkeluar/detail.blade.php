@@ -1,5 +1,14 @@
 @extends('dashboard.global')
+<style>
 
+  @media (max-width: 575.98px) { 
+
+    .im{
+      width: 100%;
+    }
+
+  }
+</style>
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -65,18 +74,16 @@
               @if($w == 'pdf')
               <tr>
                 <td width="40%">Preview File Surat </td>
-              </tr>
-              <tr>
   
-                <td colspan="2" class="class='embed-responsive'" ><iframe src="{{ Storage::url($surat->file_surat) }}"  width="100%" height="875" 
+                <td colspan="2" class="im class='embed-responsive'" ><iframe src="{{ Storage::url($surat->file_surat) }}"  width="500" height="635" 
                     type="application/pdf"> </iframe></td>
               </tr>
               @else()
               
               <tr>
                 <td width="40%">Preview File Surat </td>
-                <td colspan><img src="{{ Storage::url($surat->file_surat) }}" width="80%" height="auto" 
-                  > </td>
+                <td colspan><img src="{{ Storage::url($surat->file_surat) }}" width="500" height="auto" 
+                  class="im"> </td>
               </tr>
               @endif
             @endif
