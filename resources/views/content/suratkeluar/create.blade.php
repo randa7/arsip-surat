@@ -93,7 +93,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Tambah</button>
             <a href="/suratkeluar" type="button" class="btn btn-secondary">Kembali</a>
             <br><br><br>
         </form>

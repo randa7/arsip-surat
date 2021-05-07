@@ -98,7 +98,7 @@
             </div>
 
             <!-- /.card-body -->
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
             <a href="/suratmasuk" type="button" class="btn btn-secondary">Kembali</a>
         <br><br><br>
         </form>
