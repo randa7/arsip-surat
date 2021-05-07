@@ -299,7 +299,7 @@ class SuratKeluarController extends Controller
         ]);
 
 
-        return redirect('/suratkeluar')->with('toast_success','Surat Berhasil didisposisikan');
+        return redirect('/suratkeluar')->with('toast_success','Surat Berhasil didistribusikan');
 
     }   
 

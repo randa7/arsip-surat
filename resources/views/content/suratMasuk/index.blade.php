@@ -62,7 +62,7 @@
                 <a href="{{Storage::url($surat->file_surat)}}" target="_blank" class="btn btn-info btn-sm mr-2" title="Download"><i class="fas fa-download"></i></a>
                 @endif
                 <a href="/suratmasuk/{{$surat->idsuratmasuk}}/detail" class="btn btn-success btn-sm mr-2" title="Detail"><i class="fas fa-eye"></i></a>
-                <a href="/suratmasuk/{{$surat->idsuratmasuk}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Disposisi"><i class="fas fa-paper-plane"></i></a>
+                <a href="/suratmasuk/{{$surat->idsuratmasuk}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Distribusi"><i class="fas fa-paper-plane"></i></a>
                 @if ($role->name == 'user')
                 {{-- <li></li> --}}
                 @else

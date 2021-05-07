@@ -143,7 +143,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
             <div class="icon-box">
               <div class="icon"><i class="ri-send-plane-fill"></i></div>
-              <h4 class="title"><a href="">Disposisi</a></h4>
+              <h4 class="title"><a href="">Distribuasi Surat</a></h4>
               <p class="description">Pengiriman Surat Antar Pengguna Web</p>
             </div>
           </div>

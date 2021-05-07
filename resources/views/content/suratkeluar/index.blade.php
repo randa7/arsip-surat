@@ -63,7 +63,7 @@
                 @endif
                 
                 <a href="/suratkeluar/{{$surat->idsuratkeluar}}/detail" class="btn btn-success btn-sm mr-2" title="Detail"><i class="fas fa-eye"></i></a>
-                <a href="/suratkeluar/{{$surat->idsuratkeluar}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Disposisi"><i class="fas fa-paper-plane"></i></a>
+                <a href="/suratkeluar/{{$surat->idsuratkeluar}}/disposisi" class="btn btn-primary btn-sm mr-2" title="Distribusi"><i class="fas fa-paper-plane"></i></a>
                 @if ($role->name == 'user')
                 {{-- <li></li> --}}
                 @else

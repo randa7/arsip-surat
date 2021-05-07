@@ -304,7 +304,7 @@ class SuratMasukController extends Controller
         // ]);
 
 
-        return redirect('/suratmasuk')->with('toast_success','Surat Berhasil didisposisi');
+        return redirect('/suratmasuk')->with('toast_success','Surat Berhasil didistribusikan');
 
     }
 
