@@ -55,8 +55,8 @@
             </div>
             <!-- /.card-body -->
             
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a href="/pengguna" type="button" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <a href="/pengguna" type="button" class="btn btn-secondary">Kembali</a>
         <br><br><br>
         </form>
     </div>

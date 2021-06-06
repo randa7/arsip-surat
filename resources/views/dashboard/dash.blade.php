@@ -90,7 +90,7 @@
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-comments fa-2x text-warning"></i>
+              <i class="fas fa-user-friends fa-2x text-warning"></i>
             </div>
           </div>
         </div>

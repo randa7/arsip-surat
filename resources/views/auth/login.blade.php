@@ -34,10 +34,10 @@
                       </div>
                       <div class="form-group">
                         <div class="custom-control custom-checkbox small" style="line-height: 1.5rem;">
-                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                            <label class="form-check-label" for="remember">
-                                {{ __('Remember Me') }}
+                          <input type="checkbox" class="form-check-input" onclick="Show()">
+                   
+                            <label class="form-check-label" for="showpass">
+                                {{ __('Show Password') }}
                             </label>
                         </div>
                       </div>
@@ -63,4 +63,14 @@
       </div>
     </div>
 
+    <script>
+      function Show() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
 @endsection

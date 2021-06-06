@@ -94,8 +94,8 @@
   <section id="hero">
     <div class="hero-container">
 
-      <h1>Welcome</h1> 
-      <h2>Website Pengelolaan Arsip Surat</h2>
+      <h1>SIPAS</h1> 
+      <h2>Sistem Informasi Pengelolaan Arsip Surat</h2>
       @guest
       @if (Route::has('login'))
               <a  href="{{ route('login') }}" class="btn-get-started scrollto">Arsipkan</a>
