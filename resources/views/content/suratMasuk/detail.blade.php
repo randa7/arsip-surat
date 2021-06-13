@@ -13,7 +13,7 @@
 @section('content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 text-gray-800">Detail Surat Masuk</h1>
+  <h1 class="h3 mb-0 text-gray-800"></h1>
   <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Home</a></li>
       <li class="breadcrumb-item" aria-current="page"><a href="/suratmasuk">Surat Masuk</a></li>
@@ -96,7 +96,7 @@
           </tbody>
         </table>
         <br><br><br>
-        <a href="/suratmasuk" type="button" class="btn btn-primary float-left"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>
+        <a href="/suratmasuk" type="button" class="btn btn-primary float-left"> Kembali</a>
       </div>
     </div>
   </div>

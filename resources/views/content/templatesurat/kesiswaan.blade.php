@@ -20,7 +20,7 @@
                   <tbody>
                     
                     <tr>
-                      <td width="90%">1. Surat Panggilan Orang Tua </td>
+                      <td width="90%">1. Surat Pemanggilan Orang Tua </td>
                       <td><a href="kesiswaan/suratpemanggilan" type="button" class="btn btn-primary float-left"> Buat</a> </td>
                     </tr>
                     </tbody>
