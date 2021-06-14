@@ -30,8 +30,8 @@ class ErrorUpdateMasukRequest extends FormRequest
             "lampiran" =>'required',
             "pengirim" => 'required',
             "file_surat" =>['nullable', 'mimetypes:image/*,application/pdf','max:5120'],
-            "tanggalsurat" => 'required',
-            "tanggalsuratkeluar" => 'nullable',
+            "tanggalsurat" => 'required|before:tanggalsuratmasuk',
+            "tanggalsuratmasuk" => 'nullable',
         ];
     }
 
@@ -44,6 +44,7 @@ class ErrorUpdateMasukRequest extends FormRequest
             'lampiran.required' => 'Lampiran surat tidak boleh kosong',
             'pengirim.required' => 'Pengirim tidak boleh kosong',
             'tanggalsurat.required' => 'Tanggal surat tidak boleh kosong',
+            'tanggalsurat.before' => 'Tanggal surat tidak boleh melewati tanggal pengarsipan',
             'file_surat.mimetypes' => 'File harus bertype image atau pdf',
             'file_surat.max' => 'Ukuran file tidak boleh lebih dari 5 MB'
         ];

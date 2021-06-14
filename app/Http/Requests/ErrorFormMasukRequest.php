@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class ErrorFormMasukRequest extends FormRequest
 {
     /**
@@ -23,6 +24,8 @@ class ErrorFormMasukRequest extends FormRequest
      */
     public function rules()
     {
+    
+
         return [
             "idbagian" =>'required',
             "nomor_surat" => 'required|unique:surat_masuk',
@@ -30,8 +33,8 @@ class ErrorFormMasukRequest extends FormRequest
             "lampiran" =>'required',
             "pengirim" => 'required',
             "file_surat" =>['nullable', 'mimetypes:image/*,application/pdf','max:5120'],
-            "tanggalsurat" => 'required',
-            "tanggalsuratkeluar" => 'nullable',
+            "tanggalsurat" => 'required|before:tomorrow',
+            "tanggalsuratmasuk" => 'nullable',
         ];
     }
 
@@ -45,6 +48,7 @@ class ErrorFormMasukRequest extends FormRequest
             'lampiran.required' => 'Lampiran surat tidak boleh kosong',
             'pengirim.required' => 'Pengirim tidak boleh kosong',
             'tanggalsurat.required' => 'Tanggal surat tidak boleh kosong',
+            'tanggalsurat.before' => 'Tanggal surat tidak boleh melewati tanggal pengarsipan',
             'file_surat.mimetypes' => 'File harus bertype image atau pdf',
             'file_surat.max' => 'Ukuran file tidak boleh lebih dari 5 MB'
         ];
