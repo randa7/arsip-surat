@@ -41,9 +41,9 @@
               <td style="display: flex;">
                 <a href="/pengguna/{{$user->id}}/edit" class="btn btn-warning btn-sm mr-2" title="edit"><i class="fas fa-user-edit"></i></a>
                 <form action="/pengguna/{{$user->id}}" method="post">
-                   @csrf
-                   @method('DELETE')
-                  <button type="submit" value="delete" class="btn btn-danger btn-sm" title="hapus"><i class="fas fa-trash"></i></button>
+
+                  
+                <a href="javascript:void(0);" data-toggle="modal" data-target="#hapusModal" class="btn btn-danger btn-sm mr-2" title="Hapus"><i class="fas fa-trash"></i></a>
                 </form>
              </td>
             </tr>
@@ -59,6 +59,31 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabelLogout">Hapus Data</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Yakin akan menghapus data ?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+      <form action="/pengguna/{{$user->id}}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit" value="delete" class="btn btn-outline-danger " title="Hapus">Hapus</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
 @endsection
 
 

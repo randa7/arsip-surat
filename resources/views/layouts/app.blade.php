@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="{{asset('assets/img/logo/logo.ico')}}" rel="icon">
+    <link href="{{asset('assets/img/prov.png')}}" rel="icon">
     
 
 
@@ -45,7 +45,8 @@
    
 
         <main class="py-4 margin">
-    
+
+            <br><br><br><br>
             @yield('content')
         </main>
     </div>

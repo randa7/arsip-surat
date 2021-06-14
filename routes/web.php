@@ -17,6 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function () {
+    return view('errors.404');
+});
+
+Route::get('/register', function () {
+    return view('errors.404');
+});
+
 Route::get('/home', function () {
     return view('welcome');
 });
