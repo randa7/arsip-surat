@@ -286,7 +286,6 @@
                       <div class="login-form">
                         <div class="text-center">
                           <h1 class="h4 text-gray-900 mb-4"><b>Selamat Datang di SIPAS<br> SMKN 2 Teluk Kuantan</b></h1>
-                      
                           <img src="{{asset('assets/img/prov.png')}}" width="150px">
                           <br><br>
                           
@@ -336,6 +335,7 @@
           </div>
         </div>
 </div>
+@include('sweetalert::alert')
 <script>
   function Show() {
     var x = document.getElementById("password");

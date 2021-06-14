@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,16 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('errors.404');
-});
 
-Route::get('/register', function () {
-    return view('errors.404');
+Route::get('/failed', function () {
+    toast('Kombinasi Username dan Password salah!','error');
+
+
+    return redirect('/');
 });
 
 Route::get('/home', function () {
