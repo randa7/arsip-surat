@@ -58,7 +58,7 @@
                             <label for="file_surat">Ubah Foto Profile</label>
                             <input type="file" class="form-control-file" name="image" id="image" value="{{ old ('image','')}}" accept="image/*">
                             @error('image')
-                            <div class="alert alert-danger">File harus bertype img</div>
+                            <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                     </div>

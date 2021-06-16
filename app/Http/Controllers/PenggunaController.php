@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UpdateUsers;
 
 class PenggunaController extends Controller
 {
@@ -115,14 +116,9 @@ class PenggunaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUsers $request, $id)
     {
-        $request->validate([
-            "name" =>'required',
-            "email" => 'required',
-            "password" => 'nullable',
-            "role" => 'nullable',
-        ]);
+
 
         if($request->filled('password')) {
             $updateQ = User::where('id',$id)->update([

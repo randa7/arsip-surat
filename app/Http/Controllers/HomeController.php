@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileUpdate;
 
 class HomeController extends Controller
 {
@@ -90,15 +91,8 @@ class HomeController extends Controller
         return view('content.profile.index',compact('role' , 'editQ'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileUpdate $request)
     {
-        $request->validate([
-            "name" =>'required',
-            "email" => 'required',
-            "image" => ['nullable', 'mimetypes:image/*'],
-            "password" => 'nullable',
-
-        ]);
 
         if($request->filled('password') && $request->hasFile('image')) {
             $updateQ = User::where('id',Auth::id())->update([
