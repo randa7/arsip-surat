@@ -219,6 +219,8 @@ class SuratMasukController extends Controller
     public function detail($id)
     {
 
+        
+
         $surat = DB::table('surat_masuk')
         ->join('bagian', 'surat_masuk.idbagian', '=', 'bagian.id')
         ->select('surat_masuk.*', 'bagian.nama_bagian as bagian')
@@ -235,7 +237,14 @@ class SuratMasukController extends Controller
         ->select('bagian.*')
         ->get();
 
-    return view('content.suratMasuk.detail',compact('surat','role' , 'bagian'));
+        if( Auth::id() == $surat->iduser ){
+            return view('content.suratMasuk.detail',compact('surat','role' , 'bagian'));
+        }
+        else{
+            return redirect('403');
+        }
+
+    
     }
 
     public function disposisi($id)

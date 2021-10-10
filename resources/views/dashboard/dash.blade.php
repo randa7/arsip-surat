@@ -15,7 +15,7 @@
 <br><br>
 
   
-@if ($role->name == 'admin')
+@if ($role->name == 'superadmin')
 <div class="row mb-3">
     <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-3 col-md-6 mb-4">

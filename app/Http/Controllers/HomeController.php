@@ -101,6 +101,13 @@ class HomeController extends Controller
                 "image" =>$request["image"]->store('public/profile'),
                 "password" => Hash::make($request["password"]),
             ]);
+
+            $userId = Auth::User()->id;
+            $user = User::find($userId);
+            $user->password = Hash::make($request->password);
+            $user->save();
+        
+            Auth::login($user);
         }
         elseif($request->filled('password') && !$request->hasFile('image')){
             $updateQ = User::where('id',Auth::id())->update([
@@ -108,6 +115,13 @@ class HomeController extends Controller
                 'email' => $request["email"],
                 "password" => Hash::make($request["password"]),
             ]);
+
+            $userId = Auth::User()->id;
+            $user = User::find($userId);
+            $user->password = Hash::make($request->password);
+            $user->save();
+        
+            Auth::login($user);
         }
         elseif(!$request->filled('password') && $request->hasFile('image')){
             $updateQ = User::where('id',Auth::id())->update([
@@ -115,6 +129,13 @@ class HomeController extends Controller
                 'email' => $request["email"],
                 "image" =>$request["image"]->store('public/profile'),
             ]);
+
+            $userId = Auth::User()->id;
+            $user = User::find($userId);
+            $user->password = Hash::make($request->password);
+            $user->save();
+        
+            Auth::login($user);
         }
         else{
             $updateQ = User::where('id',Auth::id())->update([

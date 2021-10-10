@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label for="cat_description">Password</label>
                 <input type="password" class="form-control" id="password" name="password"
-                    value="{{ old ('password','')}}" placeholder="Enter Password">
+                    value="{{ old ('password','')}}" placeholder="Enter Password" minlength="7">
                 @error('password')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -51,7 +51,7 @@
             <div class="form-group">
                 <label for="select2SinglePlaceholder">Role</label>
                 <select class="select2-single-placeholder form-control" name="role" id="role" value="{{ old ('role','')}}">
-                  <option value="operator">Operator</option>
+                  <option value="admin">Admin</option>
                   <option value="user">User</option>              
                 </select>
             </div>

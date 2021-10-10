@@ -16,12 +16,12 @@ class UserSeeder extends Seeder
     {
         
         $admin = User::create([
-            'name' => 'Admin',
+            'name' => 'Super Admin',
             'email' => 'admin@arsip.com',
             'password' => bcrypt('1234567')
         ]);
 
-        $admin->assignRole('admin');
+        $admin->assignRole('superadmin');
         
         $user = User::create([
             'name' => 'User',
@@ -32,47 +32,47 @@ class UserSeeder extends Seeder
         $user->assignRole('user');
 
         $sarana = User::create([
-            'name' => 'Operator Bagian Sarana',
+            'name' => 'Admin Bagian Sarana',
             'email' => 'sarana@arsip.com',
             'password' => bcrypt('1234567')
         ]);
-        $sarana->assignRole('operator');
+        $sarana->assignRole('admin');
 
         $tatausaha = User::create([
-            'name' => 'Operator Bagian Tata Usaha',
+            'name' => 'Admin Bagian Tata Usaha',
             'email' => 'tatausaha@arsip.com',
             'password' => bcrypt('1234567')
         ]);
-        $tatausaha->assignRole('operator');
+        $tatausaha->assignRole('admin');
 
         $gudang = User::create([
-            'name' => 'Operator Bagian Gudang',
+            'name' => 'Admin Bagian Gudang',
             'email' => 'gudang@arsip.com',
             'password' => bcrypt('1234567')
         ]);
-        $gudang->assignRole('operator');
+        $gudang->assignRole('admin');
 
         $kesiswaan = User::create([
-            'name' => 'Operator Bagian Kesiswaan',
+            'name' => 'Admin Bagian Kesiswaan',
             'email' => 'kesiswaan@arsip.com',
             'password' => bcrypt('1234567')
         ]);
-        $kesiswaan->assignRole('operator');
+        $kesiswaan->assignRole('admin');
 
         $kurikulum = User::create([
-            'name' => 'Operator Bagian Kurikulum',
+            'name' => 'Admin Bagian Kurikulum',
             'email' => 'kurikulum@arsip.com',
             'password' => bcrypt('1234567')
         ]);
-        $kurikulum->assignRole('operator');
+        $kurikulum->assignRole('admin');
 
 
         $humas = User::create([
-            'name' => 'Operator Bagian HUMAS',
+            'name' => 'Admin Bagian HUMAS',
             'email' => 'humas@arsip.com',
             'password' => bcrypt('1234567')
         ]);
-        $humas->assignRole('operator');
+        $humas->assignRole('admin');
 
 
 

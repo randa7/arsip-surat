@@ -45,10 +45,10 @@ class LoginController extends Controller
 
         Auth::logoutOtherDevices(request( 'password'));
 
-        if ($user->hasRole('admin')){
+        if ($user->hasRole('superadmin')){
             return redirect()->route('dashboard');
         }
-        else if($user->hasRole('operator')){
+        else if($user->hasRole('admin')){
             return redirect()->route('dashboard');
         }
         else{

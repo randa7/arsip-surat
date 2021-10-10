@@ -60,7 +60,7 @@
                 </div>
             </div>
             </li>
-            @if ($role->name == 'admin' || $role->name == 'operator' )
+            @if ($role->name == 'superadmin' || $role->name == 'admin' )
                 <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
                     aria-controls="collapseForm">
@@ -96,7 +96,7 @@
                 </div>
             </li>
 
-            @if ($role->name == 'admin')
+            @if ($role->name == 'superadmin')
                 <li class="nav-item">
                 <a class="nav-link" href="/pengguna">
                     <i class="fas fa-users"></i>

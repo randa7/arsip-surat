@@ -30,7 +30,7 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email"
-                    value="{{ old ('email',$editQ->email)}}" placeholder="writer@bloggy.com">
+                    value="{{ old ('email',$editQ->email)}}" placeholder="writer@arsip.com" required>
                 @error('email')
                 <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -49,7 +49,7 @@
                 <label for="select2SinglePlaceholder">Role</label>
                 <select class="select2-single-placeholder form-control" name="role" id="role" >
                   <option value="">Ubah Role</option>
-                  <option value="3">Operator</option>
+                  <option value="3">Admin</option>
                   <option value="2">User</option>              
                 </select>
             </div>

@@ -32,43 +32,51 @@ Route::get('/home', function () {
     return view('welcome');
 });
 
+
+Route::get('403', function () {
+    return view('errors.403');
+});
+Route::get('419', function () {
+    return view('errors.419');
+});
+
 Auth::routes();
 
-Route::middleware('role:admin|operator|user')->get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+Route::middleware('role:superadmin|admin|user')->get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
 Route::put('/profile/update', [App\Http\Controllers\HomeController::class, 'update']);
 
 //surat masuk
 Route::get('/suratmasuk', [App\Http\Controllers\SuratMasukController::class, 'index']);
-Route::middleware('role:admin|operator')->get('/suratmasuk/create', [App\Http\Controllers\SuratMasukController::class, 'create']);
-Route::middleware('role:admin|operator')->post('/suratmasuk', [App\Http\Controllers\SuratMasukController::class, 'store']);
+Route::middleware('role:superadmin|admin')->get('/suratmasuk/create', [App\Http\Controllers\SuratMasukController::class, 'create']);
+Route::middleware('role:superadmin|admin')->post('/suratmasuk', [App\Http\Controllers\SuratMasukController::class, 'store']);
 Route::delete('/suratmasuk/{idsuratmasuk}', [App\Http\Controllers\SuratMasukController::class, 'destroy']);
 Route::put('/suratmasuk/{idsurat}', [App\Http\Controllers\SuratMasukController::class, 'update']);
-Route::middleware('role:admin|operator')->get('/suratmasuk/{suratmasuk}/edit', [App\Http\Controllers\SuratMasukController::class, 'edit']);
+Route::middleware('role:superadmin|admin')->get('/suratmasuk/{suratmasuk}/edit', [App\Http\Controllers\SuratMasukController::class, 'edit']);
 Route::get('/suratmasuk/{suratmasuk}/detail', [App\Http\Controllers\SuratMasukController::class, 'detail']);
 Route::get('/suratmasuk/{suratmasuk}/disposisi', [App\Http\Controllers\SuratMasukController::class, 'disposisi']);
 Route::put('/suratmasuk/disposisi/{idsurat}', [App\Http\Controllers\SuratMasukController::class, 'kirim']);
 
 //surat keluar
 Route::get('/suratkeluar', [App\Http\Controllers\SuratKeluarController::class, 'index']);
-Route::middleware('role:admin|operator')->get('/suratkeluar/create', [App\Http\Controllers\SuratKeluarController::class, 'create']);
-Route::middleware('role:admin|operator')->post('/suratkeluar', [App\Http\Controllers\SuratKeluarController::class, 'store']);
+Route::middleware('role:superadmin|admin')->get('/suratkeluar/create', [App\Http\Controllers\SuratKeluarController::class, 'create']);
+Route::middleware('role:superadmin|admin')->post('/suratkeluar', [App\Http\Controllers\SuratKeluarController::class, 'store']);
 Route::delete('/suratkeluar/{suratkeluar}', [App\Http\Controllers\SuratKeluarController::class, 'destroy']);
 Route::put('/suratkeluar/{idsurat}', [App\Http\Controllers\SuratKeluarController::class, 'update']);
-Route::middleware('role:admin|operator')->get('/suratkeluar/{suratkeluar}/edit', [App\Http\Controllers\SuratKeluarController::class, 'edit']);
+Route::middleware('role:superadmin|admin')->get('/suratkeluar/{suratkeluar}/edit', [App\Http\Controllers\SuratKeluarController::class, 'edit']);
 Route::get('/suratkeluar/{suratkeluar}/detail', [App\Http\Controllers\SuratKeluarController::class, 'detail']);
 Route::get('/suratkeluar/{suratkeluar}/disposisi', [App\Http\Controllers\SuratKeluarController::class, 'disposisi']);
 Route::put('/suratkeluar/disposisi/{idsurat}', [App\Http\Controllers\SuratKeluarController::class, 'kirim']);
 
 //pengguna
-Route::middleware('role:admin')->resource('pengguna', App\Http\Controllers\PenggunaController::class);
+Route::middleware('role:superadmin')->resource('pengguna', App\Http\Controllers\PenggunaController::class);
 
 
 //laporan
-Route::middleware('role:admin|operator')->get('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'index'])->name('laporansuratmasuk');
-Route::middleware('role:admin|operator')->post('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'excel']);
-Route::middleware('role:admin|operator')->get('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'index'])->name('laporansuratkeluar');
-Route::middleware('role:admin|operator')->post('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'excel']);
+Route::middleware('role:superadmin|admin')->get('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'index'])->name('laporansuratmasuk');
+Route::middleware('role:superadmin|admin')->post('/laporansuratmasuk', [App\Http\Controllers\laporansuratmasukController::class, 'excel']);
+Route::middleware('role:superadmin|admin')->get('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'index'])->name('laporansuratkeluar');
+Route::middleware('role:superadmin|admin')->post('/laporansuratkeluar', [App\Http\Controllers\laporansuratkeluarController::class, 'excel']);
 
 
 //templatesurat
