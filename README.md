@@ -4,7 +4,7 @@
 2. Clone Repository
  command line : git clone https://github.com/randa7/arsip-surat.git
 3. Masuk ke directory file
- command line : cd arsip-surat.git
+ command line : cd arsip-surat
 4. Install Depedency
  command line : composer install
 5. Buat Database (Mysql ,PostgreSQL atau sejenisnya)
